@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreign('runner_id')->references('id')->on('runners');
             $table->foreign('insurer_cif')->references('cif')->on('insurers');
             $table->foreign('sponsor_cif')->references('cif')->on('sponsors');
-            $table->foreign('race_id')->references('id')->on('race');
+            $table->foreign('race_id')->references('id')->on('races');
             $table->primary(array('runner_id', 'insurer_cif', 'sponsor_cif','qr','race_id'));
             $table->timestamps();
         });

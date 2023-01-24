@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('raceImages', function (Blueprint $table) {
-            $table->increments('race_id');
-            $table->string('race_image', 255);
-            $table->foreign('race_id')->references('id')->on('races');
-            $table->timestamps();
+        Schema::create('password_resets', function (Blueprint $table) {
+            $table->string('email')->index();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('raceImages');
+        Schema::dropIfExists('password_resets');
     }
 };
