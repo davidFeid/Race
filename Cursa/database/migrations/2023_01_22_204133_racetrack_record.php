@@ -14,14 +14,18 @@ return new class extends Migration
     public function up()
     {
         Schema::create('racetrack_records', function (Blueprint $table) {
+            $table->integer('race_id')->unsigned();
             $table->integer('runner_id')->unsigned();
             $table->string('insurer_cif');
             $table->string('sponsor_cif');
             $table->string('qr');
+            $table->time('time');
+            $table->integer('points');
             $table->foreign('runner_id')->references('id')->on('runners');
             $table->foreign('insurer_cif')->references('cif')->on('insurers');
             $table->foreign('sponsor_cif')->references('cif')->on('sponsors');
-            $table->primary(array('runner_id', 'insurer_cif', 'sponsor_cif','qr'));
+            $table->foreign('race_id')->references('id')->on('race');
+            $table->primary(array('runner_id', 'insurer_cif', 'sponsor_cif','qr','race_id'));
             $table->timestamps();
         });
     }
