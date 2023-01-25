@@ -40,8 +40,8 @@ class Race extends Model
 		'date' => 'required',
 		'hour' => 'required',
 		'starting_point' => 'required',
-		'maps_image' => 'required',
-		'promotional_poster' => 'required',
+		'maps_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+		'promotional_poster' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 		'sponsor_price' => 'required'
     ];
 

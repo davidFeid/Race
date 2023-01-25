@@ -63,8 +63,8 @@
 											<td>{{ $race->date }}</td>
 											<td>{{ $race->hour }}</td>
 											<td>{{ $race->starting_point }}</td>
-											<td>{{ $race->maps_image }}</td>
-											<td>{{ $race->promotional_poster }}</td>
+											<td><img src="/mapsImages/{{ $race->maps_image }}" width="100px"></td>
+											<td><img src="/promotionalPosters/{{ $race->promotional_poster }}" width="100px"></td>
 											<td>{{ $race->sponsor_price }}</td>
 											<td>{{ $race->active }}</td>
 

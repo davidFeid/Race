@@ -45,7 +45,23 @@ class RaceController extends Controller
     {
         request()->validate(Race::$rules);
         
-        $race = Race::create($request->all());
+        $input = $request->all();
+
+        if ($image = $request->file('maps_image')) {
+            $destinationPath = 'mapsImages/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['maps_image'] = "$profileImage";
+        }
+
+        if ($image = $request->file('promotional_poster')) {
+            $destinationPath = 'promotionalPosters/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['promotional_poster'] = "$profileImage";
+        }
+        
+        $race = Race::create($input);
 
         return redirect()->route('races.index')
             ->with('success', 'Race created successfully.');
@@ -86,7 +102,16 @@ class RaceController extends Controller
      */
     public function update(Request $request, Race $race)
     {
-        request()->validate(Race::$rules);
+        request()->validate([
+            'description' => 'required',
+		    'ramp' => 'required',
+		    'max_participants' => 'required',
+		    'km' => 'required',
+		    'date' => 'required',
+		    'hour' => 'required',
+		    'starting_point' => 'required',
+		    'sponsor_price' => 'required'
+        ]);
 
         $race->update($request->all());
 
@@ -101,9 +126,13 @@ class RaceController extends Controller
      */
     public function destroy($id)
     {
-        $race = Race::find($id)->delete();
-
+        if(Race::find($id)->active == "0"){
+            $race = Race::find($id)->update(['active' => "1"]);
+        }else{
+            $race = Race::find($id)->update(['active' => "0"]);
+        }
+        //$race = Race::find($id)->delete();
         return redirect()->route('races.index')
-            ->with('success', 'Race deleted successfully');
+            ->with('success', 'Race status edit successfully');
     }
 }

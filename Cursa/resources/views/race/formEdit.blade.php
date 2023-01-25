@@ -22,13 +22,13 @@
                     {{ Form::number('km', $race->km, ['class' => 'form-control' . ($errors->has('km') ? ' is-invalid' : ''), 'placeholder' => 'Km']) }}
                     {!! $errors->first('km', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
+            </div>
+            <div class="col">
                 <div class="form-group">
                     {{ Form::label('date') }}
                     {{ Form::date('date', $race->date, ['class' => 'form-control' . ($errors->has('date') ? ' is-invalid' : ''), 'placeholder' => 'Date']) }}
                     {!! $errors->first('date', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
-            </div>
-            <div class="col">
                 <div class="form-group">
                 {{ Form::label('hour') }}
                 {{ Form::time('hour', $race->hour, ['class' => 'form-control' . ($errors->has('hour') ? ' is-invalid' : ''), 'placeholder' => 'Hour']) }}
@@ -38,16 +38,6 @@
                     {{ Form::label('starting_point') }}
                     {{ Form::text('starting_point', $race->starting_point, ['class' => 'form-control' . ($errors->has('starting_point') ? ' is-invalid' : ''), 'placeholder' => 'Starting Point']) }}
                     {!! $errors->first('starting_point', '<div class="invalid-feedback">:message</div>') !!}
-                </div>
-                <div class="form-group">
-                    {{ Form::label('maps_image') }}
-                    {{ Form::file('maps_image', $race->maps_image, ['class' => 'form-control' . ($errors->has('maps_image') ? ' is-invalid' : ''), 'placeholder' => 'Maps Image']) }}
-                    {!! $errors->first('maps_image', '<div class="invalid-feedback">:message</div>') !!}
-                </div>
-                <div class="form-group">
-                    {{ Form::label('promotional_poster') }}
-                    {{ Form::file('promotional_poster', $race->promotional_poster, ['class' => 'form-control' . ($errors->has('promotional_poster') ? ' is-invalid' : ''), 'placeholder' => 'Promotional Poster']) }}
-                    {!! $errors->first('promotional_poster', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="form-group">
                     {{ Form::label('sponsor_price') }}
