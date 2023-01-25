@@ -44,7 +44,7 @@ class RaceController extends Controller
     public function store(Request $request)
     {
         request()->validate(Race::$rules);
-
+        
         $race = Race::create($request->all());
 
         return redirect()->route('races.index')

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Class Race
@@ -29,6 +30,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Race extends Model
 {
+    use HasFactory;
     
     static $rules = [
 		'description' => 'required',
@@ -40,8 +42,7 @@ class Race extends Model
 		'starting_point' => 'required',
 		'maps_image' => 'required',
 		'promotional_poster' => 'required',
-		'sponsor_price' => 'required',
-		'active' => 'required',
+		'sponsor_price' => 'required'
     ];
 
     protected $perPage = 20;
