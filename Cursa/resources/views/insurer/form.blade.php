@@ -18,14 +18,10 @@
         </div>
         <div class="form-group">
             {{ Form::label('price') }}
-            {{ Form::text('price', $insurer->price, ['class' => 'form-control' . ($errors->has('price') ? ' is-invalid' : ''), 'placeholder' => 'Price']) }}
+            {{ Form::number('price', $insurer->price, ['class' => 'form-control' . ($errors->has('price') ? ' is-invalid' : ''), 'placeholder' => 'Price']) }}
             {!! $errors->first('price', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
-            {{ Form::label('active') }}
-            {{ Form::text('active', $insurer->active, ['class' => 'form-control' . ($errors->has('active') ? ' is-invalid' : ''), 'placeholder' => 'Active']) }}
-            {!! $errors->first('active', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+      
 
     </div>
     <div class="box-footer mt20">

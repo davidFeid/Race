@@ -27,7 +27,7 @@ class Insurer extends Model
 		'name' => 'required',
 		'address' => 'required',
 		'price' => 'required',
-		'active' => 'required',
+		
     ];
 
     protected $perPage = 20;

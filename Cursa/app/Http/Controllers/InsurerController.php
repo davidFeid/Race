@@ -101,7 +101,12 @@ class InsurerController extends Controller
      */
     public function destroy($id)
     {
-        $insurer = Insurer::find($id)->delete();
+        if(Insurer::find($id)->active == "0"){
+            $insurer = Insurer::find($id)->update(['active' => "1"]);
+        }else{
+            $insurer = Insurer::find($id)->update(['active' => "0"]);
+        }
+        // $insurer = Insurer::find($id)->delete();
 
         return redirect()->route('insurers.index')
             ->with('success', 'Insurer deleted successfully');
