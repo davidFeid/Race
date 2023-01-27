@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('runner_id')->unsigned();
             $table->string('insurer_cif');
             $table->string('qr');
+            $table->integer('dorsal');
             $table->time('time');
             $table->integer('points');
             $table->foreign('runner_id')->references('id')->on('runners');

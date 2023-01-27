@@ -57,9 +57,9 @@
 											<td>{{ $insurer->active }}</td>
 
                                             <td>
-                                                <form action="{{ route('insurers.destroy',$insurer->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('insurers.show',$insurer->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('insurers.edit',$insurer->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                <form action="{{ route('insurers.destroy',$insurer->cif) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('insurers.show',$insurer->cif) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('insurers.edit',$insurer->cif) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>

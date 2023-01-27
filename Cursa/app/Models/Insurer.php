@@ -21,6 +21,10 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Insurer extends Model
 {
+
+  protected $primaryKey = "cif";
+
+  protected $keyType = 'string';
     
     static $rules = [
 		'cif' => 'required',
