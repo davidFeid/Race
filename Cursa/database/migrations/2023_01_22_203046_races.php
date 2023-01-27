@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('maps_image');
             $table->string('promotional_poster');
             $table->float('sponsor_price');
-            $table->enum('active',['0','1']);
+            $table->enum('active',['0','1'])->default(0)->nullable();
             $table->timestamps();
         });
     }

@@ -17,13 +17,11 @@ return new class extends Migration
             $table->integer('race_id')->unsigned();
             $table->integer('runner_id')->unsigned();
             $table->string('insurer_cif');
-          
             $table->string('qr');
             $table->time('time');
             $table->integer('points');
             $table->foreign('runner_id')->references('id')->on('runners');
             $table->foreign('insurer_cif')->references('cif')->on('insurers');
-  
             $table->foreign('race_id')->references('id')->on('races');
             $table->primary(array('runner_id', 'insurer_cif','qr','race_id'));
             $table->timestamps();

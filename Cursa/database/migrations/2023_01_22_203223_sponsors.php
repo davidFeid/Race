@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('email');
             $table->enum('home',['0','1']);
             $table->float('total');
-            $table->enum('active',['0','1']);
+            $table->enum('active',['0','1'])->default(0)->nullable();
             $table->timestamps();
         });
     }
