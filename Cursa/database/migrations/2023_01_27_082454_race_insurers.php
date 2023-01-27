@@ -13,19 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('racetrack_records', function (Blueprint $table) {
+        Schema::create('race_insurers', function (Blueprint $table) {
             $table->integer('race_id')->unsigned();
-            $table->integer('runner_id')->unsigned();
             $table->string('insurer_cif');
-          
-            $table->string('qr');
-            $table->time('time');
-            $table->integer('points');
-            $table->foreign('runner_id')->references('id')->on('runners');
             $table->foreign('insurer_cif')->references('cif')->on('insurers');
-  
             $table->foreign('race_id')->references('id')->on('races');
-            $table->primary(array('runner_id', 'insurer_cif','qr','race_id'));
+            $table->primary(array('insurer_cif','race_id'));
             $table->timestamps();
         });
     }
@@ -37,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('racetrack_records');
+        Schema::dropIfExists('race_insurers');
     }
 };

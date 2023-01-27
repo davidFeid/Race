@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('race_images', function (Blueprint $table) {
-            $table->increments('race_id');
-            $table->string('race_image', 255);
+        Schema::create('race_sponsors', function (Blueprint $table) {
+            $table->integer('race_id')->unsigned();
+            $table->string('sponsor_cif');
+            $table->foreign('sponsor_cif')->references('cif')->on('sponsors');
             $table->foreign('race_id')->references('id')->on('races');
+            $table->primary(array('sponsor_cif','race_id'));
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('raceImages');
+        Schema::dropIfExists('race_sponsors');
     }
 };
