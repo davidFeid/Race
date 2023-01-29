@@ -5,12 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Insurer
+ * Class Sponsor
  *
  * @property $cif
  * @property $name
+ * @property $logo
  * @property $address
- * @property $price
+ * @property $email
+ * @property $home
+ * @property $total
  * @property $active
  * @property $created_at
  * @property $updated_at
@@ -19,18 +22,20 @@ use Illuminate\Database\Eloquent\Model;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Insurer extends Model
+class Sponsor extends Model
 {
-
-  protected $primaryKey = "cif";
-  protected $keyType = 'string';
+    protected $primaryKey = "cif";
+    protected $keyType = 'string';
     
     static $rules = [
 		'cif' => 'required',
 		'name' => 'required',
+		'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 		'address' => 'required',
-		'price' => 'required',
-		
+		'email' => 'required',
+		'home' => 'required',
+		'total' => 'required',
+
     ];
 
     protected $perPage = 20;
@@ -40,7 +45,7 @@ class Insurer extends Model
      *
      * @var array
      */
-    protected $fillable = ['cif','name','address','price','active'];
+    protected $fillable = ['cif','name','logo','address','email','home','total','active'];
 
 
     /**
@@ -48,7 +53,7 @@ class Insurer extends Model
      */
     public function racetrackRecords()
     {
-        return $this->hasMany('App\Models\RacetrackRecord', 'insurer_cif', 'cif');
+        return $this->hasMany('App\Models\RacetrackRecord', 'sponsor_cif', 'cif');
     }
     
 
