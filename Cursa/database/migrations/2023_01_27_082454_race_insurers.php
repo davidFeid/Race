@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('race_insurers', function (Blueprint $table) {
             $table->integer('race_id')->unsigned();
             $table->string('insurer_cif');
+            $table->float('price');
             $table->foreign('insurer_cif')->references('cif')->on('insurers');
             $table->foreign('race_id')->references('id')->on('races');
             $table->primary(array('insurer_cif','race_id'));

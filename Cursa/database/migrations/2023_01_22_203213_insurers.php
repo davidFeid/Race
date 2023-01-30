@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('cif')->primary();
             $table->string('name');
             $table->string('address');
-            $table->float('price');
             $table->enum('active',['0','1'])->default(0)->nullable();
             $table->timestamps();
         });
