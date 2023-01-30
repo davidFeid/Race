@@ -17,55 +17,24 @@
                             <a class="btn btn-primary" href="{{ route('races.index') }}"> Back</a>
                         </div>
                     </div>
-
                     <div class="card-body">
-                        
-                        <div class="form-group">
-                            <strong>Description:</strong>
-                            {{ $race->description }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Ramp:</strong>
-                            {{ $race->ramp }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Max Participants:</strong>
-                            {{ $race->max_participants }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Km:</strong>
-                            {{ $race->km }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Date:</strong>
-                            {{ $race->date }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Hour:</strong>
-                            {{ $race->hour }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Starting Point:</strong>
-                            {{ $race->starting_point }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Maps Image:</strong>
-                            {{ $race->maps_image }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Promotional Poster:</strong>
-                            {{ $race->promotional_poster }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Sponsor Price:</strong>
-                            {{ $race->sponsor_price }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Active:</strong>
-                            {{ $race->active }}
-                        </div>
-
-                    </div>
+                        <table class='table table-bordered'>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nombre</th>
+                                <th>Direccion</th>
+                                <th>Edad</th>
+                            </tr>
+                            @foreach ($runners as $runner)
+                                <tr>
+                                    <td>{{$runner->id}}</td>
+                                    <td>{{$runner->name}}</td>
+                                    <td>{{$runner->address}}</td>
+                                    <td>{{$runner->birth_date}}</td>
+                                </tr>
+                            @endforeach
+                        </table>
+                    </div>  
                 </div>
             </div>
         </div>

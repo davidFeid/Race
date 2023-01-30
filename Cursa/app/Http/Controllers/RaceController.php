@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Race;
 use Illuminate\Http\Request;
+use App\Models\Insurer;
 
 /**
  * Class RaceController
@@ -75,9 +76,14 @@ class RaceController extends Controller
      */
     public function show($id)
     {
-        $race = Race::find($id);
+        //$race = Race::find($id);
+        $runners = Race::select('runners.*')
+            ->join('racetrack_records','races.id','=','racetrack_records.race_id')
+            ->join('runners','runners.id','=','racetrack_records.runner_id')
+            ->where('races.id','=',$id)
+            ->get();
 
-        return view('race.show', compact('race'));
+        return view('race.show', compact('runners'));
     }
 
     /**
@@ -135,4 +141,6 @@ class RaceController extends Controller
         return redirect()->route('races.index')
             ->with('success', 'Race status edit successfully');
     }
+
+    
 }
