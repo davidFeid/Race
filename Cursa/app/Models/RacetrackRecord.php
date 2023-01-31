@@ -1,0 +1,74 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+/**
+ * Class RacetrackRecord
+ *
+ * @property $race_id
+ * @property $runner_id
+ * @property $insurer_cif
+ * @property $qr
+ * @property $dorsal
+ * @property $time
+ * @property $points
+ * @property $created_at
+ * @property $updated_at
+ *
+ * @property Insurer $insurer
+ * @property Race $race
+ * @property Runner $runner
+ * @package App
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
+class RacetrackRecord extends Model
+{
+    
+    static $rules = [
+		'race_id' => 'required',
+		'runner_id' => 'required',
+		'insurer_cif' => 'required',
+		'qr' => 'required',
+		'dorsal' => 'required',
+		'time' => 'required',
+		'points' => 'required',
+    ];
+
+    protected $perPage = 20;
+
+    /**
+     * Attributes that should be mass-assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['race_id','runner_id','insurer_cif','qr','dorsal','time','points'];
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function insurer()
+    {
+        return $this->hasOne('App\Models\Insurer', 'cif', 'insurer_cif');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function race()
+    {
+        return $this->hasOne('App\Models\Race', 'id', 'race_id');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function runner()
+    {
+        return $this->hasOne('App\Models\Runner', 'id', 'runner_id');
+    }
+    
+
+}

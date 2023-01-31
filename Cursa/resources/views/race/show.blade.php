@@ -18,19 +18,30 @@
                         </div>
                     </div>
                     <div class="card-body">
+                        <h2>Ranking Runners</h2>
                         <table class='table table-bordered'>
                             <tr>
                                 <th>Id</th>
-                                <th>Nombre</th>
-                                <th>Direccion</th>
-                                <th>Edad</th>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Age</th>
+                                <th>QR</th>
+                                <th>Dorsal</th>
+                                <th>Time</th>
+                                <th>Points</th>
+                                <th>Insurer</th>
                             </tr>
                             @foreach ($runners as $runner)
                                 <tr>
-                                    <td>{{$runner->id}}</td>
-                                    <td>{{$runner->name}}</td>
-                                    <td>{{$runner->address}}</td>
-                                    <td>{{$runner->birth_date}}</td>
+                                    <td>{{$runner->runner->id}}</td>
+                                    <td>{{$runner->runner->name}}</td>
+                                    <td>{{$runner->runner->address}}</td>
+                                    <td>{{$runner->runner->birth_date}}</td>
+                                    <td>{{$runner->qr}}</td>
+                                    <td>{{$runner->dorsal}}</td>
+                                    <td>{{$runner->time}}</td>
+                                    <td>{{$runner->points}}</td>
+                                    <td>{{$runner->insurer->name}}</td>
                                 </tr>
                             @endforeach
                         </table>

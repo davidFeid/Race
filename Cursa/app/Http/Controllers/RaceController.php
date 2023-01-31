@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Race;
 use Illuminate\Http\Request;
-use App\Models\Insurer;
+use App\Models\RacetrackRecord;
+
 
 /**
  * Class RaceController
@@ -77,11 +78,12 @@ class RaceController extends Controller
     public function show($id)
     {
         //$race = Race::find($id);
-        $runners = Race::select('runners.*')
+        /*$runners = Race::select('runners.*')
             ->join('racetrack_records','races.id','=','racetrack_records.race_id')
             ->join('runners','runners.id','=','racetrack_records.runner_id')
             ->where('races.id','=',$id)
-            ->get();
+            ->get();*/
+        $runners = RacetrackRecord::with('race')->with('runner')->with('insurer')->where('race_id','=',$id)->get();
 
         return view('race.show', compact('runners'));
     }
