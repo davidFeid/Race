@@ -28,9 +28,7 @@ class Insurer extends Model
     static $rules = [
 		'cif' => 'required',
 		'name' => 'required',
-		'address' => 'required',
-		'price' => 'required',
-		
+		'address' => 'required'
     ];
 
     protected $perPage = 20;
@@ -40,7 +38,7 @@ class Insurer extends Model
      *
      * @var array
      */
-    protected $fillable = ['cif','name','address','price','active'];
+    protected $fillable = ['cif','name','address','active'];
 
 
     /**

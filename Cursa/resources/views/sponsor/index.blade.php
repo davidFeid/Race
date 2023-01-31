@@ -34,7 +34,7 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
+                                       
                                         
 										<th>Cif</th>
 										<th>Name</th>
@@ -51,7 +51,7 @@
                                 <tbody>
                                     @foreach ($sponsors as $sponsor)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
+                                            
                                             
 											<td>{{ $sponsor->cif }}</td>
 											<td>{{ $sponsor->name }}</td>
@@ -68,7 +68,13 @@
                                                     <a class="btn btn-sm btn-success" href="{{ route('sponsors.edit',$sponsor->cif) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+
+                                                    @if ( $sponsor->active == 1)
+                                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Deactivate</button>
+                                                    @else
+                                                        <button type="submit" class="btn btn-danger btn-sm button-avtice-color"><i class="fa fa-fw fa-trash"></i> Active</button>
+                                                    @endif
+
                                                 </form>
                                             </td>
                                         </tr>

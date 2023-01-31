@@ -33,10 +33,6 @@
                             {{ $insurer->address }}
                         </div>
                         <div class="form-group">
-                            <strong>Price:</strong>
-                            {{ $insurer->price }}
-                        </div>
-                        <div class="form-group">
                             <strong>Active:</strong>
                             {{ $insurer->active }}
                         </div>

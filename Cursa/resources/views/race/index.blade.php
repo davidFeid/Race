@@ -34,7 +34,7 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
+                                        <th>Id</th>
                                         
 										<th>Description</th>
 										<th>Ramp</th>
@@ -74,7 +74,11 @@
                                                     <a class="btn btn-sm btn-success" href="{{ route('races.edit',$race->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    @if ( $race->active == 1)
+                                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Deactivate</button>
+                                                    @else
+                                                        <button type="submit" class="btn btn-danger btn-sm button-avtice-color"><i class="fa fa-fw fa-trash"></i> Active</button>
+                                                    @endif
                                                 </form>
                                             </td>
                                         </tr>

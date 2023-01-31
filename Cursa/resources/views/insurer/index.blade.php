@@ -34,12 +34,10 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
                                         
 										<th>Cif</th>
 										<th>Name</th>
 										<th>Address</th>
-										<th>Price</th>
 										<th>Active</th>
 
                                         <th></th>
@@ -48,12 +46,10 @@
                                 <tbody>
                                     @foreach ($insurers as $insurer)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
                                             
 											<td>{{ $insurer->cif }}</td>
 											<td>{{ $insurer->name }}</td>
 											<td>{{ $insurer->address }}</td>
-											<td>{{ $insurer->price }}</td>
 											<td>{{ $insurer->active }}</td>
 
                                             <td>
@@ -62,7 +58,12 @@
                                                     <a class="btn btn-sm btn-success" href="{{ route('insurers.edit',$insurer->cif) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+
+                                                    @if ( $insurer->active == 1)
+                                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Deactivate</button>
+                                                    @else
+                                                        <button type="submit" class="btn btn-danger btn-sm button-avtice-color" ><i class="fa fa-fw fa-trash"></i> Active</button>
+                                                    @endif
                                                 </form>
                                             </td>
                                         </tr>

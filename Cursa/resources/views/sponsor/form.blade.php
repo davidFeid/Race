@@ -22,8 +22,11 @@
             {!! $errors->first('email', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('home') }}
-            {{ Form::text('home', $sponsor->home, ['class' => 'form-control' . ($errors->has('home') ? ' is-invalid' : ''), 'placeholder' => 'Home']) }}
+            {{ Form::label('Appear on Home:') }}<br>
+            {{ Form::label('yes') }}
+            {{ Form::radio('home', '1', ['class' => 'form-control' . ($errors->has('home') ? ' is-invalid' : ''), 'placeholder' => 'Home']) }}
+            {{ Form::label('no') }}
+            {{ Form::radio('home', '0', ['class' => 'form-control' . ($errors->has('home') ? ' is-invalid' : ''), 'placeholder' => 'Home']) }}
             {!! $errors->first('home', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

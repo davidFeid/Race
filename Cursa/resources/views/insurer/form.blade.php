@@ -1,6 +1,5 @@
 <div class="box box-info padding-1">
     <div class="box-body">
-        
         <div class="form-group">
             {{ Form::label('cif') }}
             {{ Form::text('cif', $insurer->cif, ['class' => 'form-control' . ($errors->has('cif') ? ' is-invalid' : ''), 'placeholder' => 'Cif']) }}
@@ -16,13 +15,6 @@
             {{ Form::text('address', $insurer->address, ['class' => 'form-control' . ($errors->has('address') ? ' is-invalid' : ''), 'placeholder' => 'Address']) }}
             {!! $errors->first('address', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
-            {{ Form::label('price') }}
-            {{ Form::number('price', $insurer->price, ['class' => 'form-control' . ($errors->has('price') ? ' is-invalid' : ''), 'placeholder' => 'Price']) }}
-            {!! $errors->first('price', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-      
-
     </div>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">Submit</button>
