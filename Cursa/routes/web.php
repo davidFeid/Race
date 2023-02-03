@@ -23,10 +23,10 @@ Route::get('/', function () {
 });
 
 //Race
-Route::resource('races', RaceController::class);
+Route::resource('races', RaceController::class)->middleware('auth');;
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 //Insurers

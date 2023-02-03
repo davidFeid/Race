@@ -45,6 +45,8 @@ class Race extends Model
 		'sponsor_price' => 'required'
     ];
 
+    protected $hidden = ['active'];
+
     protected $perPage = 20;
 
     /**
