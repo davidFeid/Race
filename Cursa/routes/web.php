@@ -23,19 +23,19 @@ Route::get('/', function () {
 });
 
 //Race
-Route::resource('races', RaceController::class)->middleware('auth');;
+Route::resource('races', RaceController::class)->middleware('auth');
 Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 //Insurers
-Route::resource('insurers', InsurerController::class);
+Route::resource('insurers', InsurerController::class)->middleware('auth');
 Auth::routes();
 
 
 //Sponsors
-Route::resource('sponsors',SponsorController::class);
+Route::resource('sponsors',SponsorController::class)->middleware('auth');
 Auth::routes();
 
 

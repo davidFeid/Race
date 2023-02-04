@@ -16,10 +16,10 @@ class InsurerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $insurers = Insurer::paginate();
-
+        $request->session()->put('key', 'value');
         return view('insurer.index', compact('insurers'))
             ->with('i', (request()->input('page', 1) - 1) * $insurers->perPage());
     }

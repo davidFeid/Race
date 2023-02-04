@@ -16,10 +16,10 @@ class SponsorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $sponsors = Sponsor::paginate();
-
+        $request->session()->put('key', 'value');
         return view('sponsor.index', compact('sponsors'))
             ->with('i', (request()->input('page', 1) - 1) * $sponsors->perPage());
     }

@@ -37,7 +37,8 @@ class Sponsor extends Model
 		'total' => 'required',
 
     ];
-
+    
+    protected $hidden = ['active'];
     protected $perPage = 20;
 
     /**

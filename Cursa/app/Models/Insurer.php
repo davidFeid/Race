@@ -30,7 +30,8 @@ class Insurer extends Model
 		'name' => 'required',
 		'address' => 'required'
     ];
-
+    
+    protected $hidden = ['active'];
     protected $perPage = 20;
 
     /**

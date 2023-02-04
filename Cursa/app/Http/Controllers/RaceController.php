@@ -22,7 +22,6 @@ class RaceController extends Controller
     {
         $races = Race::paginate();
         $request->session()->put('key', 'value');
-        dd($request);
         return view('race.index', compact('races'))
             ->with('i', (request()->input('page', 1) - 1) * $races->perPage());
     }
