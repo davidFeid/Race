@@ -41,3 +41,8 @@ Auth::routes();
 
 //Home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Payment 
+
+Route::get('/paypal/pay', 'PaymentController@payWithPaypal');
+Auth::routes();

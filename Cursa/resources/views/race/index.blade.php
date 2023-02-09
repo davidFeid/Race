@@ -67,11 +67,12 @@
 											<td><img src="/promotionalPosters/{{ $race->promotional_poster }}" width="100px"></td>
 											<td>{{ $race->sponsor_price }}</td>
 											<td>{{ $race->active }}</td>
-
+                                           
                                             <td>
                                                 <form action="{{ route('races.destroy',$race->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('races.show',$race->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('races.edit',$race->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                    
                                                     @csrf
                                                     @method('DELETE')
                                                     @if ( $race->active == 1)
@@ -85,6 +86,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            
                         </div>
                     </div>
                 </div>
