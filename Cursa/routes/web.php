@@ -4,6 +4,7 @@ use App\Http\Controllers\InsurerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RaceController;
 use App\Http\Controllers\SponsorController;
+use App\Http\Controllers\PaypalController;
 
 
 
@@ -42,7 +43,11 @@ Auth::routes();
 //Home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Payment 
+//Paypal
 
-Route::get('/paypal/pay', 'PaymentController@payWithPaypal');
-Auth::routes();
+Route::controller(PaypalController::class)->group(function(){
+    Route::get('/checkout', 'Index')->name('paymentindex');
+    Route::post('/request-payment', 'RequestPayment')->name('requestpayment');
+    Route::get('/payment-success', 'PaymentSuccess')->name('paymentsuccess');
+    Route::get('/payment-cancel', 'PaymentCancel')->name('paymentCancel');
+});
