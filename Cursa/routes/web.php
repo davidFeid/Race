@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RaceController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\PaypalController;
-
+use App\Http\Controllers\FileUploadController;
 
 
 /*
@@ -43,11 +43,15 @@ Auth::routes();
 //Home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Paypal
 
+//Paypal
 Route::controller(PaypalController::class)->group(function(){
     Route::get('/checkout', 'Index')->name('paymentindex');
     Route::post('/request-payment', 'RequestPayment')->name('requestpayment');
     Route::get('/payment-success', 'PaymentSuccess')->name('paymentsuccess');
     Route::get('/payment-cancel', 'PaymentCancel')->name('paymentCancel');
 });
+
+//Image/File
+Route::get('upload-ui', [FileUploadController::class, 'dropzoneUi' ]);
+Route::post('file-upload', [FileUploadController::class, 'dropzoneFileUpload' ])->name('dropzoneFileUpload');

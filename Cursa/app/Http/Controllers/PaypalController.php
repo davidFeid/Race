@@ -65,9 +65,11 @@ class PaypalController extends Controller
         $response = $provider->capturePaymentOrder($request['token']);
 
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
+            dd($response);
             return redirect()
                 ->route('paymentindex')
                 ->with('success', 'Transaction complete.');
+
         } else {
             return redirect()
                 ->route('paymentindex')
