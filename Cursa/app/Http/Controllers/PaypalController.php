@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
+use PDF;
+
 
 class PaypalController extends Controller
 {
@@ -65,10 +67,11 @@ class PaypalController extends Controller
         $response = $provider->capturePaymentOrder($request['token']);
 
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
-            /**dd($response);**/
+
+
             return redirect()
                 ->route('paymentindex')
-                ->with('success', 'Transaction complete.');
+                ->with('success','Transaction complete.');
 
         } else {
             return redirect()
@@ -82,5 +85,12 @@ class PaypalController extends Controller
         return redirect()
             ->route('paymentindex')
             ->with('error', $response['message'] ?? 'You have cancelled the transaction.');
+    }
+
+    public function generatePDF(){
+
+        $pdf = PDF::loadView('PaypalController.generatePDF', compact('success'));
+        return $pdf->download('success.pdf');
+
     }
 }

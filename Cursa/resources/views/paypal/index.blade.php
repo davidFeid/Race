@@ -14,6 +14,7 @@
 
         @if(Session::has('success'))
             <div class="alert alert-success">{{Session::get('success') }}</div>
+            <a href="{{ route('generatePDF')}}" class="btn btn-primary"> Generate invoice (PDF)</a>
         @endif
         <div class="payment-box">
             <form action="{{ route('requestpayment')}}" method="POST">
