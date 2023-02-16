@@ -27,7 +27,7 @@
                 }
             }
         });
-        
+
         var minSteps = 6,
             maxSteps = 60,
             timeBetweenSteps = 100,

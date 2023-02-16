@@ -28,3 +28,12 @@
     transition: color .2s ease,background-color .2s ease,border-color .2s ease,box-shadow .2s ease;
 }
 
+.dropzone {
+    background: #e3e6ff;
+    border-radius: 13px;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px dotted #1833FF;
+    margin-top: 50px;
+}

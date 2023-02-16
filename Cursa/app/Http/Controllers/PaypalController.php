@@ -47,7 +47,6 @@ class PaypalController extends Controller
                     return redirect()->away($links['href']);
                 }
             }
-
             return redirect()
                 ->route('paymentindex')
                 ->with('error', 'Something went wrong.');
@@ -78,6 +77,7 @@ class PaypalController extends Controller
                 ->route('paymentindex')
                 ->with('error', $response['message'] ?? 'Something went wrong.');
         }
+        generatePDF($response);
     }
 
     public function PaymentCancel()
@@ -87,10 +87,5 @@ class PaypalController extends Controller
             ->with('error', $response['message'] ?? 'You have cancelled the transaction.');
     }
 
-    public function generatePDF(){
 
-        $pdf = PDF::loadView('PaypalController.generatePDF', compact('success'));
-        return $pdf->download('success.pdf');
-
-    }
 }

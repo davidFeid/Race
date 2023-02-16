@@ -56,5 +56,3 @@ Route::controller(PaypalController::class)->group(function(){
 Route::get('upload-ui', [FileUploadController::class, 'dropzoneUi' ]);
 Route::post('file-upload', [FileUploadController::class, 'dropzoneFileUpload' ])->name('dropzoneFileUpload');
 
-//PDF
-Route::get('download-pdf',  [PaypalController::class, 'generatePDF'])->name('generatePDF');

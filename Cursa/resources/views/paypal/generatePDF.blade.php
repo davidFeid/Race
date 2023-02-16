@@ -1,1 +1,0 @@
-<span>Update Sponsor</span>
