@@ -25,6 +25,7 @@ class Runner extends Model
 {
     
     static $rules = [
+        'dni' => 'required',
 		'name' => 'required',
 		'address' => 'required',
 		'birth_date' => 'required',
@@ -39,7 +40,7 @@ class Runner extends Model
      *
      * @var array
      */
-    protected $fillable = ['name','address','birth_date','federation','num_federation'];
+    protected $fillable = ['dni','name','address','birth_date','federation','num_federation'];
 
 
     /**
@@ -47,7 +48,7 @@ class Runner extends Model
      */
     public function placement()
     {
-        return $this->hasOne('App\Models\Placement', 'runner_id', 'id');
+        return $this->hasOne('App\Models\Placement', 'runner_dni', 'dni');
     }
     
     /**
@@ -55,7 +56,7 @@ class Runner extends Model
      */
     public function racetrackRecord()
     {
-        return $this->hasOne('App\Models\RacetrackRecord', 'runner_id', 'id');
+        return $this->hasOne('App\Models\RacetrackRecord', 'runner_dni', 'dni');
     }
     
 

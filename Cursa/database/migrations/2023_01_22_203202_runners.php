@@ -14,13 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('runners', function (Blueprint $table) {
-            $table->increments('id');
+            $table->string('dni',9);
             $table->string('name');
             $table->string('address');
             $table->date('birth_date');
             $table->enum('federation',['0','1']);
             $table->integer('num_federation');
             $table->timestamps();
+            $table->primary('dni');
         });
     }
 

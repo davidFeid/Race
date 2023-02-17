@@ -5,35 +5,26 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class RacetrackRecord
+ * Class RaceInsurer
  *
  * @property $race_id
- * @property $runner_id
  * @property $insurer_cif
- * @property $qr
- * @property $dorsal
- * @property $time
- * @property $points
+ * @property $price
  * @property $created_at
  * @property $updated_at
  *
  * @property Insurer $insurer
  * @property Race $race
- * @property Runner $runner
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class RacetrackRecord extends Model
+class RaceInsurer extends Model
 {
     
     static $rules = [
 		'race_id' => 'required',
-		'runner_dni' => 'required',
 		'insurer_cif' => 'required',
-		'qr' => 'required',
-		'dorsal' => 'required',
-		'time' => 'required',
-		'points' => 'required',
+		'price' => 'required',
     ];
 
     protected $perPage = 20;
@@ -43,7 +34,7 @@ class RacetrackRecord extends Model
      *
      * @var array
      */
-    protected $fillable = ['race_id','runner_dni','insurer_cif','qr','dorsal','time','points'];
+    protected $fillable = ['race_id','insurer_cif','price'];
 
 
     /**
@@ -60,14 +51,6 @@ class RacetrackRecord extends Model
     public function race()
     {
         return $this->hasOne('App\Models\Race', 'id', 'race_id');
-    }
-    
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function runner()
-    {
-        return $this->hasOne('App\Models\Runner', 'dni', 'runner_dni');
     }
     
 

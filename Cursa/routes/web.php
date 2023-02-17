@@ -52,7 +52,13 @@ Route::controller(PaypalController::class)->group(function(){
     Route::get('/payment-cancel', 'PaymentCancel')->name('paymentCancel');
 });
 
+<<<<<<< Updated upstream
 //Image/File
 Route::get('upload-ui', [FileUploadController::class, 'dropzoneUi' ]);
 Route::post('file-upload', [FileUploadController::class, 'dropzoneFileUpload' ])->name('dropzoneFileUpload');
 
+=======
+//Runners
+Route::get('runnerForm/{id}', [App\Http\Controllers\RaceController::class, 'runnerForm']);
+//
+>>>>>>> Stashed changes

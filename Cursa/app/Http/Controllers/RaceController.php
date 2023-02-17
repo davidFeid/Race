@@ -62,7 +62,7 @@ class RaceController extends Controller
             $image->move($destinationPath, $profileImage);
             $input['promotional_poster'] = "$profileImage";
         }
-        
+        dd($input);
         $race = Race::create($input);
 
         return redirect()->route('races.index')
@@ -77,12 +77,6 @@ class RaceController extends Controller
      */
     public function show($id)
     {
-        //$race = Race::find($id);
-        /*$runners = Race::select('runners.*')
-            ->join('racetrack_records','races.id','=','racetrack_records.race_id')
-            ->join('runners','runners.id','=','racetrack_records.runner_id')
-            ->where('races.id','=',$id)
-            ->get();*/
         $runners = RacetrackRecord::with('race')->with('runner')->with('insurer')->where('race_id','=',$id)->get();
   
         
@@ -132,6 +126,7 @@ class RaceController extends Controller
             ->with('success', 'Race updated successfully');
     }
 
+
     /**
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
@@ -147,6 +142,11 @@ class RaceController extends Controller
         //$race = Race::find($id)->delete();
         return redirect()->route('races.index')
             ->with('success', 'Race status edit successfully');
+    }
+
+    public function runnerForm(Request $request){
+        $race = Race::with('raceInsurer')->where('id','=',$request->id)->get();
+        return view('race.runnerForm', compact('race'));
     }
 
     

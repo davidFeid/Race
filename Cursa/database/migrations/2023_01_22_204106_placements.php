@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('placements', function (Blueprint $table) {
-            $table->increments('runner_id');
+            $table->string('runner_dni',9);
             $table->integer('points')->unsigned();
-            $table->foreign('runner_id')->references('id')->on('runners');
+            $table->foreign('runner_dni')->references('dni')->on('runners');
             $table->timestamps();
         });
     }

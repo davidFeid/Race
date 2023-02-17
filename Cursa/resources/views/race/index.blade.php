@@ -54,7 +54,7 @@
                                 <tbody>
                                     @foreach ($races as $race)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
+                                            <td>{{ $race->id }}</td>
                                             
 											<td>{{ $race->description }}</td>
 											<td>{{ $race->ramp }}</td>
@@ -70,6 +70,7 @@
                                            
                                             <td>
                                                 <form action="{{ route('races.destroy',$race->id) }}" method="POST">
+                                                    
                                                     <a class="btn btn-sm btn-primary " href="{{ route('races.show',$race->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('races.edit',$race->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     

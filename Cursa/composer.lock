@@ -3305,6 +3305,7 @@
             "time": "2023-01-12T18:13:24+00:00"
         },
         {
+<<<<<<< Updated upstream
             "name": "sabberworm/php-css-parser",
             "version": "8.4.0",
             "source": {
@@ -3367,6 +3368,17 @@
             },
             "dist": {
                 "type": "zip",
+=======
+            "name": "srmklive/paypal",
+            "version": "3.0.18",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/srmklive/laravel-paypal.git",
+                "reference": "0090adfe44bfff7fe14cf3ee0f8df56d72cccb59"
+            },
+            "dist": {
+                "type": "zip",
+>>>>>>> Stashed changes
                 "url": "https://api.github.com/repos/srmklive/laravel-paypal/zipball/0090adfe44bfff7fe14cf3ee0f8df56d72cccb59",
                 "reference": "0090adfe44bfff7fe14cf3ee0f8df56d72cccb59",
                 "shasum": ""

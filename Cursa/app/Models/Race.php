@@ -54,7 +54,7 @@ class Race extends Model
      *
      * @var array
      */
-    protected $fillable = ['description','ramp','max_participants','km','date','hour','starting_point','maps_image','promotional_poster','sponsor_price','active'];
+    protected $fillable = ['id','description','ramp','max_participants','km','date','hour','starting_point','maps_image','promotional_poster','sponsor_price','active'];
 
 
     /**
@@ -73,5 +73,12 @@ class Race extends Model
         return $this->hasMany('App\Models\RacetrackRecord', 'race_id', 'id');
     }
     
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function raceInsurer()
+    {
+        return $this->hasMany('App\Models\RaceInsurer', 'race_id', 'id');
+    }
 
 }
