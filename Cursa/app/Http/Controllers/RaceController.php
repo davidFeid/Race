@@ -84,8 +84,14 @@ class RaceController extends Controller
             ->where('races.id','=',$id)
             ->get();*/
         $runners = RacetrackRecord::with('race')->with('runner')->with('insurer')->where('race_id','=',$id)->get();
-
-        return view('race.show', compact('runners'));
+  
+        
+        $data = [
+            'runners'=>$runners,
+            'id'=>$id
+        ];
+        return view('race.show', $data);
+       /* return view('race.show', compact('runners'));*/
     }
 
     /**
@@ -97,7 +103,6 @@ class RaceController extends Controller
     public function edit($id)
     {
         $race = Race::find($id);
-
         return view('race.edit', compact('race'));
     }
 

@@ -25,7 +25,7 @@ class FileUploadController extends Controller
         $image = $request->file('file');
         echo ($image);
         /*$image->dataName().'.'.   aqui se tendra que pasar el id de la carrera*/
-        $imageName = $image->getClientOriginalName();
+        $imageName = $request->id.'-'.$image->getClientOriginalName();
         $image->move(public_path('images'),$imageName);
         return response()->json(['success'=>$imageName]);
     }
