@@ -29,8 +29,7 @@ class Runner extends Model
 		'name' => 'required',
 		'address' => 'required',
 		'birth_date' => 'required',
-		'federation' => 'required',
-		'num_federation' => 'required',
+		'federation' => 'required'
     ];
 
     protected $primaryKey = 'dni';
