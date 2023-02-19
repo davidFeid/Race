@@ -38,7 +38,7 @@
                                     <td>{{$runner->runner->name}}</td>
                                     <td>{{$runner->runner->address}}</td>
                                     <td>{{$runner->runner->birth_date}}</td>
-                                    <td>{{$runner->qr}}</td>
+                                    <td><img src="/qrcodes/{{$runner->qr}}" /></td>
                                     <td>{{$runner->dorsal}}</td>
                                     <td>{{$runner->time}}</td>
                                     <td>{{$runner->points}}</td>

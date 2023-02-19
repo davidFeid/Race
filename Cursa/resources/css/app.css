@@ -37,3 +37,9 @@
     border: 2px dotted #1833FF;
     margin-top: 50px;
 }
+
+.row{
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+}

@@ -33,6 +33,8 @@ class Runner extends Model
 		'num_federation' => 'required',
     ];
 
+    protected $primaryKey = 'dni';
+
     protected $perPage = 20;
 
     /**

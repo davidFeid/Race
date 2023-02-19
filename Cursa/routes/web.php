@@ -4,6 +4,7 @@ use App\Http\Controllers\InsurerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RaceController;
 use App\Http\Controllers\SponsorController;
+use App\Http\Controllers\RacetrackRecordController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\FileUploadController;
 
@@ -39,7 +40,6 @@ Auth::routes();
 Route::resource('sponsors',SponsorController::class)->middleware('auth');
 Auth::routes();
 
-
 //Home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -52,13 +52,11 @@ Route::controller(PaypalController::class)->group(function(){
     Route::get('/payment-cancel', 'PaymentCancel')->name('paymentCancel');
 });
 
-<<<<<<< Updated upstream
 //Image/File
 Route::get('upload-ui', [FileUploadController::class, 'dropzoneUi' ]);
 Route::post('file-upload', [FileUploadController::class, 'dropzoneFileUpload' ])->name('dropzoneFileUpload');
 
-=======
 //Runners
 Route::get('runnerForm/{id}', [App\Http\Controllers\RaceController::class, 'runnerForm']);
-//
->>>>>>> Stashed changes
+Route::post('runnerForm/dni', [App\Http\Controllers\RaceController::class, 'storeRunnerForm']);
+Auth::routes();

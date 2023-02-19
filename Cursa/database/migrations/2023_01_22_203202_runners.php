@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('address');
             $table->date('birth_date');
             $table->enum('federation',['0','1']);
-            $table->integer('num_federation');
+            $table->integer('num_federation')->nullable();
             $table->timestamps();
             $table->primary('dni');
         });

@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('insurer_cif');
             $table->string('qr');
             $table->integer('dorsal');
-            $table->time('time');
-            $table->integer('points');
+            $table->time('time')->nullable();
+            $table->integer('points')->nullable();
             $table->foreign('runner_dni')->references('dni')->on('runners');
             $table->foreign('insurer_cif')->references('cif')->on('insurers');
             $table->foreign('race_id')->references('id')->on('races');

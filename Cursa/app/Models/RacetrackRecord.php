@@ -31,9 +31,7 @@ class RacetrackRecord extends Model
 		'runner_dni' => 'required',
 		'insurer_cif' => 'required',
 		'qr' => 'required',
-		'dorsal' => 'required',
-		'time' => 'required',
-		'points' => 'required',
+		'dorsal' => 'required'
     ];
 
     protected $perPage = 20;
