@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Insurer;
+use App\Models\RaceInsurer;
+use App\Models\Race;
 use Illuminate\Http\Request;
 
 /**
@@ -32,7 +34,8 @@ class InsurerController extends Controller
     public function create()
     {
         $insurer = new Insurer();
-        return view('insurer.create', compact('insurer'));
+        $races = Race::all();
+        return view('insurer.create', compact('insurer','races'));
     }
 
     /**
@@ -44,9 +47,15 @@ class InsurerController extends Controller
     public function store(Request $request)
     {
         request()->validate(Insurer::$rules);
-
         $insurer = Insurer::create($request->all());
-
+        if(isset($request->race)){
+            foreach ($request->race as $key => $value) {
+                $input['race_id'] = $key;
+                $input['insurer_cif'] = $request->cif;
+                $input['price'] = $value[1];
+                RaceInsurer::create($input);
+            }
+        }
         return redirect()->route('insurers.index')
             ->with('success', 'Insurer created successfully.');
     }
@@ -59,8 +68,11 @@ class InsurerController extends Controller
      */
     public function show($id)
     {
-        $insurer = Insurer::find($id);
-
+        if(RaceInsurer::select('*')->where('insurer_cif','=',$id)->count() > 0){
+            $insurer = RaceInsurer::with('insurer')->with('race')->where('insurer_cif','=',$id)->get();
+        }else{
+            $insurer = Insurer::find($id);
+        }
         return view('insurer.show', compact('insurer'));
     }
 

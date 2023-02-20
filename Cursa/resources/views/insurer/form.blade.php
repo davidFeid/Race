@@ -16,7 +16,21 @@
             {!! $errors->first('address', '<div class="invalid-feedback">:message</div>') !!}
         </div>
     </div>
+    <div class="box-body">
+        <div>Register in Races...</div>
+        <div class="form-group row row-cols-5">
+            @foreach ($races as $race)
+                <div class="form-check form-switch col">
+                    <input class="form-check-input" type="checkbox" id="check{{$race->id}}" name="race[{{$race->id}}][]" onchange="(document.getElementById('{{$race->id}}').disabled == true) ? document.getElementById('{{$race->id}}').disabled = false: document.getElementById('{{$race->id}}').disabled = true;">
+                    <label class="form-check-label" for="check{{$race->id}}">Race - {{$race->id}}</label>
+                    <br>
+                    <label for="{{$race->id}}" class="form-label">Price</label>
+                    <input type="number" class="form-control" id="{{$race->id}}" name="race[{{$race->id}}][]" disabled required>
+                </div>
+            @endforeach
+        </div>
+    </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary mt-2">Submit</button>
     </div>
 </div>

@@ -61,8 +61,7 @@ class RaceController extends Controller
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $input['promotional_poster'] = "$profileImage";
-        }
-        dd($input);
+        }   
         $race = Race::create($input);
 
         return redirect()->route('races.index')

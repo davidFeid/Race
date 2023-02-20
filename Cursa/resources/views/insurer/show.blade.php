@@ -1,8 +1,5 @@
 @extends('layouts.app')
 
-@section('template_title')
-    {{ $insurer->name ?? 'Show Insurer' }}
-@endsection
 
 @section('content')
     <section class="content container-fluid">
@@ -17,9 +14,8 @@
                             <a class="btn btn-primary" href="{{ route('insurers.index') }}"> Back</a>
                         </div>
                     </div>
-
+                    {{$insurer}}
                     <div class="card-body">
-                        
                         <div class="form-group">
                             <strong>Cif:</strong>
                             {{ $insurer->cif }}
@@ -35,8 +31,7 @@
                         <div class="form-group">
                             <strong>Active:</strong>
                             {{ $insurer->active }}
-                        </div>
-
+                        </div>  
                     </div>
                 </div>
             </div>
