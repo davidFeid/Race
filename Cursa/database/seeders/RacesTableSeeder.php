@@ -26,8 +26,8 @@ class RacesTableSeeder extends Seeder
         $race1 -> maps_image  = '20230204101753.png';
         $race1 -> promotional_poster  = '20230204101753.jpg';
         $race1 -> sponsor_price = 100;
-        $race1 -> active  = false;
-        $race1 -> sace();
+      
+        $race1 -> save();
 
         //Race2
         $race2 = new Race;
@@ -41,8 +41,8 @@ class RacesTableSeeder extends Seeder
         $race2 -> maps_image  = '20230204102037.png';
         $race2 -> promotional_poster = '20230204102037.jpg';
         $race2 -> sponsor_price = 100;
-        $race2 -> active  = false;
-        $race2 -> sace();
+    
+        $race2 -> save();
         
         //Race3
         $race3 = new Race;
@@ -56,8 +56,8 @@ class RacesTableSeeder extends Seeder
         $race3 -> maps_image  = '20230204102150.png';
         $race3 -> promotional_poster = '20230204102150.jpg';
         $race3 -> sponsor_price = 200;
-        $race3 -> active  = false;
-        $race3 -> sace();
+     
+        $race3 -> save();
 
         //Race4
         $race4 = new Race;
@@ -71,8 +71,8 @@ class RacesTableSeeder extends Seeder
         $race4 -> maps_image  = '20230204102405.png';
         $race4 -> promotional_poster = '20230204102405.jpg';
         $race4 -> sponsor_price = 500;
-        $race4 -> active  = false;
-        $race4 -> sace();
+  
+        $race4 -> save();
 
         //Race5
         $race5 = new Race;
@@ -86,8 +86,8 @@ class RacesTableSeeder extends Seeder
         $race5 -> maps_image  = '20230204102511.png';
         $race5 -> promotional_poster = '20230204102511.jpg';
         $race5 -> sponsor_price = 230;
-        $race5 -> active  = false;
-        $race5 -> sace();
+       
+        $race5 -> save();
 
         //Race6
         $race6 = new Race;
@@ -101,8 +101,8 @@ class RacesTableSeeder extends Seeder
         $race6 -> maps_image  = '20230204102732.png';
         $race6 -> promotional_poster = '20230204102732.jpg';
         $race6 -> sponsor_price = 150;
-        $race6 -> active  = false;
-        $race6 -> sace();
+      
+        $race6 -> save();
 
         //Race7
         $race7 = new Race;
@@ -116,8 +116,8 @@ class RacesTableSeeder extends Seeder
         $race7 -> maps_image  = '20230204102850.png';
         $race7 -> promotional_poster = '20230204102850.jpg';
         $race7 -> sponsor_price = 300;
-        $race7 -> active  = false;
-        $race7 -> sace();
+       
+        $race7 -> save();
 
     }
 }

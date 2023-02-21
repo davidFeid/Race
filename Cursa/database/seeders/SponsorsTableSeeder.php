@@ -21,9 +21,8 @@ class SponsorsTableSeeder extends Seeder
         $sponsor1->logo = '20230204093024.png';
         $sponsor1->address = 'Carretera Villafer, S/n, Km 7 200';
         $sponsor1->email = 'info@orica.com';
-        $sponsor1->home = false;
+  
         $sponsor1->total = 120;
-        $sponsor1 -> active  = false;
         $sponsor1->save();
 
         //Sponsor2
@@ -33,9 +32,9 @@ class SponsorsTableSeeder extends Seeder
         $sponsor2->logo = '20230204093239.png';
         $sponsor2->address = 'Domicilio Social';
         $sponsor2->email = 'info@giantbicycles.com';
-        $sponsor2->home = true;
+   
         $sponsor2->total = 120;
-        $sponsor2 -> active  = false;
+
         $sponsor2->save();
 
         //Sponsor3
@@ -45,9 +44,9 @@ class SponsorsTableSeeder extends Seeder
         $sponsor3->logo = '20230204092344.png';
         $sponsor3->address = 'ESPAÑA. Pasaje Yucatan, 42 - LOCAL 3';
         $sponsor3->email = 'info@lampre.com';
-        $sponsor3->home = false;
+       
         $sponsor3->total = 120;
-        $sponsor3 -> active  = false;
+    
         $sponsor3->save();
 
         //Sponsor4
@@ -57,9 +56,9 @@ class SponsorsTableSeeder extends Seeder
         $sponsor4->logo = '20230204092107.svg';
         $sponsor4->address = 'CALLE DE L`ENERGIA, 7';
         $sponsor4->email = 'info@atixxsports.com';
-        $sponsor4->home = false;
+    
         $sponsor4->total = 120;
-        $sponsor4 -> active  = false;
+     
         $sponsor4->save();
 
         //Sponsor5
@@ -69,9 +68,9 @@ class SponsorsTableSeeder extends Seeder
         $sponsor5->logo = '20230204094131.svg';
         $sponsor5->address = 'AVENIDA DE CASTILLA';
         $sponsor5->email = 'info.industrial.es@conti.de';
-        $sponsor5->home = false;
+     
         $sponsor5->total = 120;
-        $sponsor5 -> active  = false;
+    
         $sponsor5->save();
 
         //Sponsor6
@@ -81,9 +80,9 @@ class SponsorsTableSeeder extends Seeder
         $sponsor6->logo = '20230204094938.png';
         $sponsor6->address = 'Francia';
         $sponsor6->email = 'info@tourdefrance.com';
-        $sponsor6->home = false;
+ 
         $sponsor6->total = 120;
-        $sponsor6 -> active  = false;
+       
         $sponsor6->save();
 
         //Sponsor7
@@ -93,9 +92,9 @@ class SponsorsTableSeeder extends Seeder
         $sponsor7->logo = '20230204093902.png';
         $sponsor7->address = 'A Gándara, Estrada Castelao nº 49-50';
         $sponsor7->email = 'info@skoda.com';
-        $sponsor7->home = false;
+       
         $sponsor7->total = 120;
-        $sponsor7 -> active  = false;
+      
         $sponsor7->save();
 
         //Sponsor8
@@ -105,9 +104,9 @@ class SponsorsTableSeeder extends Seeder
         $sponsor8->logo = '20230204091732.png';
         $sponsor8->address = 'AV PIO XII, Nº 26 28016, MADRID, MADRID';
         $sponsor8->email = 'infousa@bmc-switzerland.com';
-        $sponsor8->home = false;
+     
         $sponsor8->total = 120;
-        $sponsor8 -> active  = false;
+    
         $sponsor8->save();
 
     }
