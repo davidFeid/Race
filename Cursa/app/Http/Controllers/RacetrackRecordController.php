@@ -35,8 +35,8 @@ class RacetrackRecordController extends Controller
 
     public function storeRunnerForm(Request $request){
         if(Runner::find($request->runner_dni)){
-            if(RacetrackRecord::select('*')->where('runner_dni','=',$request->runner_dni)->where('race_id','=',$request->race_id)){
-                dd("Ya estas registrado en esta carrera");
+            if(RacetrackRecord::select('*')->where('runner_dni','=',$request->runner_dni)->where('race_id','=',$request->race_id)->count() > 0){
+                dd("Ya estas registrado");
             }else{
                 request()->validate([
                     'runner_dni' => 'required',
@@ -47,7 +47,7 @@ class RacetrackRecordController extends Controller
 
                 $input = $request->all();
                 $name = $request->runner_dni.'_'.$request->race_id.'_qr.svg';
-                QrCode::generate('http://127.0.0.1:8000/racetrack-record/'.$request->race_id.'/'.$request->runner_id, '../public/qrcodes/'.$name);
+                QrCode::generate('http://127.0.0.1:8000/racetrack-record/'.$request->race_id.'/'.$request->runner_dni, '../public/qrcodes/'.$name);
                 $input['qr'] = $name;
 
                 RacetrackRecord::create($input);
@@ -72,7 +72,7 @@ class RacetrackRecordController extends Controller
             ]);
             $input = $request->all();
             $name = $request->dni.'_'.$request->race_id.'_qr.svg';
-            QrCode::generate('http://127.0.0.1:8000/racetrack-record/'.$request->race_id.'/'.$request->runner_id, '../public/qrcodes/'.$name);
+            QrCode::generate('http://127.0.0.1:8000/racetrack-record/'.$request->race_id.'/'.$request->dni, '../public/qrcodes/'.$name);
             $input['qr'] = $name;
             $input['runner_dni'] = $request->dni;
             RacetrackRecord::create($input);

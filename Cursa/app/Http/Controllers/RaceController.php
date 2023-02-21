@@ -77,17 +77,8 @@ class RaceController extends Controller
      */
     public function show($id)
     {
-        $runners = RacetrackRecord::with('race')->with('insurer')->where('race_id','=',$id)->get();
-        //$runners = RacetrackRecord::with('runner')->select('*')->where('race_id','=',$id)->get();
-        //$runners = RacetrackRecord::where('race_id','=',$id)->get();
         $runners = RacetrackRecord::with('race')->where('race_id','=',$id)->get();
-        //$runners = Runner::with('racetrackRecord')->get();
-        /*$data = [
-            'runners'=>$runners,
-            'id'=>$id
-        ];*/
         return view('race.show', compact('runners','id'));
-       /* return view('race.show', compact('runners'));*/
     }
 
     /**

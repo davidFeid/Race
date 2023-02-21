@@ -86,7 +86,13 @@ class InsurerController extends Controller
     {
         $insurer = Insurer::find($id);
 
-        return view('insurer.edit', compact('insurer'));
+        //RACES WHERE ISN'T INSURER
+        $racesN = RaceInsurer::select('race_id')->where('insurer_cif','!=',''.$id.'')->get();
+        //RACES WHERE IS INSURERS
+        $racesY = RaceInsurer::where('insurer_cif','=',''.$id.'')->get();
+        $allRaces = Race::whereNotIn('id',$racesY[0]->toArray())->get();
+
+        return view('insurer.edit', compact('insurer','racesY','racesN','allRaces'));
     }
 
     /**
