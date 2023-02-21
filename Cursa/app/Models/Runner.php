@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Class Runner
@@ -23,7 +24,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Runner extends Model
 {
-    
+
+    use HasFactory;
+
     static $rules = [
         'dni' => 'required',
 		'name' => 'required',

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Runner;
 use Illuminate\Http\Request;
+use App\Models\Race;
 
 /**
  * Class RunnerController

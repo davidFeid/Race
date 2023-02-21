@@ -34,7 +34,7 @@
                            
                             @foreach ($runners as $runner)
                                 <tr>
-                                    <td>{{$runner->runner->id}}</td>
+                                    <td>{{$runner->runner->dni}}</td>
                                     <td>{{$runner->runner->name}}</td>
                                     <td>{{$runner->runner->address}}</td>
                                     <td>{{$runner->runner->birth_date}}</td>
