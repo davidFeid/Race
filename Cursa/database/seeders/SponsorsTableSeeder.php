@@ -21,7 +21,6 @@ class SponsorsTableSeeder extends Seeder
         $sponsor1->logo = '20230204093024.png';
         $sponsor1->address = 'Carretera Villafer, S/n, Km 7 200';
         $sponsor1->email = 'info@orica.com';
-  
         $sponsor1->total = 120;
         $sponsor1->save();
 

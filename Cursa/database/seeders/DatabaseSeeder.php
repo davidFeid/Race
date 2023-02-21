@@ -15,20 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
 
         $this->call([
             RacesTableSeeder::class
         ]);
-
-       /* $this->call([
-            RunnersTableSeeder::class
-        ]);*/
 
         $this->call([
             InsurersTableSeeder::class
@@ -36,6 +26,12 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             SponsorsTableSeeder::class
+        ]);
+        $this->call([
+            RaceInsurersTableSeeder::class
+        ]);
+        $this->call([
+            UserTableSeeder::class
         ]);
 
     }
