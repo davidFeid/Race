@@ -14,7 +14,7 @@ class RaceInsurersTableSeeder extends Seeder
      */
     public function run()
     {
-        //Sponsor1
+        //Insurer1
             //Race1
             $raceinsurer1 = new RaceInsurer;
             $raceinsurer1->race_id = 1;
@@ -34,7 +34,7 @@ class RaceInsurersTableSeeder extends Seeder
             $raceinsurer3->price = 150;
             $raceinsurer3->save();
 
-        //Sponsor2
+        //Insurer2
             //Race1
             $raceinsurer4 = new RaceInsurer;
             $raceinsurer4->race_id = 1;
@@ -54,7 +54,7 @@ class RaceInsurersTableSeeder extends Seeder
             $raceinsurer6->price = 90;
             $raceinsurer6->save();
 
-        //Sponsor3
+        //Insurer3
             //Race1
             $raceinsurer7 = new RaceInsurer;
             $raceinsurer7->race_id = 1;
@@ -79,8 +79,8 @@ class RaceInsurersTableSeeder extends Seeder
             $raceinsurer10->insurer_cif= "A28007268";
             $raceinsurer10->price = 125;
             $raceinsurer10->save();
-        
-        //Sponsor4
+
+        //Insurer4
             //Race2
             $raceinsurer11 = new RaceInsurer;
             $raceinsurer11->race_id = 2;
@@ -104,10 +104,10 @@ class RaceInsurersTableSeeder extends Seeder
             $raceinsurer14->race_id = 4;
             $raceinsurer14->insurer_cif= "A28007748";
             $raceinsurer14->price = 160;
-            $raceinsurer14->save();  
-            
-        
-        //Sponsor5
+            $raceinsurer14->save();
+
+
+        //Insurer5
             //Race1
             $raceinsurer15 = new RaceInsurer;
             $raceinsurer15->race_id = 1;
@@ -131,22 +131,22 @@ class RaceInsurersTableSeeder extends Seeder
             $raceinsurer18->race_id = 6;
             $raceinsurer18->insurer_cif= "A28011864";
             $raceinsurer18->price = 160;
-            $raceinsurer18->save();   
+            $raceinsurer18->save();
 
-            
-        //Sponsor6
+
+        //Insurer6
             //Race4
-            $raceinsurer15 = new RaceInsurer;
-            $raceinsurer15->race_id = 4;
-            $raceinsurer15->insurer_cif= "A58333261";
-            $raceinsurer15->price = 80;
-            $raceinsurer15->save();
+            $raceinsurer19 = new RaceInsurer;
+            $raceinsurer19->race_id = 4;
+            $raceinsurer19->insurer_cif= "A58333261";
+            $raceinsurer19->price = 80;
+            $raceinsurer19->save();
             //Race5
-            $raceinsurer16 = new RaceInsurer;
-            $raceinsurer16->race_id = 5;
-            $raceinsurer16->insurer_cif= "A58333261";
-            $raceinsurer16->price = 96;
-            $raceinsurer16->save();
-          
+            $raceinsurer20 = new RaceInsurer;
+            $raceinsurer20->race_id = 5;
+            $raceinsurer20->insurer_cif= "A58333261";
+            $raceinsurer20->price = 96;
+            $raceinsurer20->save();
+
     }
 }
