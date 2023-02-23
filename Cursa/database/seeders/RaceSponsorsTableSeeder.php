@@ -117,6 +117,21 @@ class RaceSponsorsTableSeeder extends Seeder
 
 
         //Sponsor8 - S74161135A
+            //Race15
+            $racesponsor18 = new RaceSponsor;
+            $racesponsor18->race_id = 2;
+            $racesponsor18->insurer_cif = "S74161135A";
+            $racesponsor18->save();
+            //Race16
+            $racesponsor19 = new RaceSponsor;
+            $racesponsor19->race_id = 3;
+            $racesponsor19->insurer_cif = "S74161135A";
+            $racesponsor19->save();
+            //Race17
+            $racesponsor20 = new RaceSponsor;
+            $racesponsor20->race_id = 5;
+            $racesponsor20->insurer_cif = "S74161135A";
+            $racesponsor20->save();
 
     }
 }
