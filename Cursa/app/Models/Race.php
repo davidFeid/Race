@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property $description
  * @property $ramp
  * @property $max_participants
+ * @property $race_price
  * @property $km
  * @property $date
  * @property $hour
@@ -31,11 +32,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Race extends Model
 {
     use HasFactory;
-    
+
     static $rules = [
 		'description' => 'required',
 		'ramp' => 'required',
 		'max_participants' => 'required',
+        'race_price' => 'required',
 		'km' => 'required',
 		'date' => 'required',
 		'hour' => 'required',
@@ -54,7 +56,7 @@ class Race extends Model
      *
      * @var array
      */
-    protected $fillable = ['id','description','ramp','max_participants','km','date','hour','starting_point','maps_image','promotional_poster','sponsor_price','active'];
+    protected $fillable = ['id','description','ramp','max_participants','race_price','km','date','hour','starting_point','maps_image','promotional_poster','sponsor_price','active'];
 
 
     /**
@@ -64,7 +66,7 @@ class Race extends Model
     {
         return $this->hasOne('App\Models\Raceimage', 'race_id', 'id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -72,7 +74,7 @@ class Race extends Model
     {
         return $this->hasMany('App\Models\RacetrackRecord', 'race_id', 'id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

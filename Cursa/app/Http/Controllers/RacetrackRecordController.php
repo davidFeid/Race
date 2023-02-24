@@ -43,6 +43,7 @@ class RacetrackRecordController extends Controller
     		        'insurer_cif' => 'required',
 	    	        'dorsal' => 'required',
 		            'race_id' => 'required'
+
                 ]);
 
                 $input = $request->all();
@@ -68,8 +69,12 @@ class RacetrackRecordController extends Controller
                 'dni' => 'required',
                 'insurer_cif' => 'required',
                 'dorsal' => 'required',
-                'race_id' => 'required'
+                'race_id' => 'required',
+                'totalPrice'  => 'required'
             ]);
+
+            dd($request->totalPrice);
+
             $input = $request->all();
             $name = $request->dni.'_'.$request->race_id.'_qr.svg';
             QrCode::generate('http://127.0.0.1:8000/racetrack-record/'.$request->race_id.'/'.$request->dni, '../public/qrcodes/'.$name);

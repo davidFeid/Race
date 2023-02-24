@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('description', 255);
             $table->decimal('ramp', 5, 2);
             $table->string('max_participants');
+            $table->float('race_price');
             $table->decimal('km', 5, 2);
             $table->date('date');
             $table->time('hour');

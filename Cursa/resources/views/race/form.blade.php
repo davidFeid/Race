@@ -18,6 +18,11 @@
                     {!! $errors->first('max_participants', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="form-group">
+                    {{ Form::label('race_price') }}
+                    {{ Form::number('race_price', $race->race_price, ['class' => 'form-control' . ($errors->has('race_price') ? ' is-invalid' : ''), 'placeholder' => 'Sponsor Price']) }}
+                    {!! $errors->first('race_price', '<div class="invalid-feedback">:message</div>') !!}
+                </div>
+                <div class="form-group">
                     {{ Form::label('km') }}
                     {{ Form::number('km', $race->km, ['class' => 'form-control' . ($errors->has('km') ? ' is-invalid' : ''), 'placeholder' => 'Km']) }}
                     {!! $errors->first('km', '<div class="invalid-feedback">:message</div>') !!}

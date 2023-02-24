@@ -42,15 +42,22 @@
         <select class="form-select" id="insurer_cif" name="insurer_cif" required>
             <option selected disabled value="">Choose...</option>
             @foreach ($race[0]->raceInsurer as $insurer)
-            <option value="{{$insurer->insurer_cif}}">{{$insurer->insurer_cif}}</option>
+                <option value="{{$insurer->insurer_cif}}">{{$insurer->insurer_cif .' '.$insurer->price.'€'}}</option>
+
             @endforeach
         </select>
+
     </div>
     <input type="hidden" id="dorsal" name="dorsal" value="{{$dorsal}}">
     <input type="hidden" id="race_id" name="race_id" value="{{$id}}">
+
+    <input type="hidden" id="totalPrice" name="totalPrice" value="{{$insurer->race_price + $insurer->price}}">
+
     <div class="col-12">
       <button class="btn btn-primary" type="submit">Register</button>
+
+
     </div>
 
-    
+
 </form>

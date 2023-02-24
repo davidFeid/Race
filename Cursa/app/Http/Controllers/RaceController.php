@@ -47,7 +47,7 @@ class RaceController extends Controller
     public function store(Request $request)
     {
         request()->validate(Race::$rules);
-        
+
         $input = $request->all();
 
         if ($image = $request->file('maps_image')) {
@@ -62,7 +62,7 @@ class RaceController extends Controller
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $input['promotional_poster'] = "$profileImage";
-        }   
+        }
         $race = Race::create($input);
 
         return redirect()->route('races.index')
@@ -106,6 +106,7 @@ class RaceController extends Controller
             'description' => 'required',
 		    'ramp' => 'required',
 		    'max_participants' => 'required',
+            'race_price' => 'required',
 		    'km' => 'required',
 		    'date' => 'required',
 		    'hour' => 'required',
@@ -142,5 +143,5 @@ class RaceController extends Controller
         return view('race.runnerForm', compact('race'));
     }
 
-    
+
 }
