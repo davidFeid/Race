@@ -69,11 +69,8 @@ class RacetrackRecordController extends Controller
                 'dni' => 'required',
                 'insurer_cif' => 'required',
                 'dorsal' => 'required',
-                'race_id' => 'required',
-                'totalPrice'  => 'required'
+                'race_id' => 'required'
             ]);
-
-            dd($request->totalPrice);
 
             $input = $request->all();
             $name = $request->dni.'_'.$request->race_id.'_qr.svg';
