@@ -1,9 +1,4 @@
 @extends('layouts.app')
-
-@section('template_title')
-    Update Runner
-@endsection
-
 @section('content')
 
 <div class="container">
@@ -17,9 +12,10 @@
             {{-- <a href="{{ route('generatePDF.pdf')}}" class="btn btn-primary"> Generate invoice (PDF)</a> --}}
         @endif
         <div class="payment-box">
+            <h1>{{$amount.'€'}}</h1>
             <form action="{{ route('requestpayment')}}" method="POST">
                 @csrf
-                <input type="number" name="amount" placeholder="Enter The Price" class="form-control">
+                <input type="hidden" name="amount" placeholder="Enter The Price" value="{{$amount}}" class="form-control">
                 <input type="submit"  value="PayPal" class="btn-container-module-paypal">
 
             </form>

@@ -58,6 +58,9 @@ Route::post('file-upload', [FileUploadController::class, 'dropzoneFileUpload' ])
 
 //Runners
 Route::get('runnerForm/{id}', [App\Http\Controllers\RacetrackRecordController::class, 'runnerForm']);
-Route::post('runnerForm/registro/dni', [App\Http\Controllers\RacetrackRecordController::class, 'storeRunnerForm']);
+Route::post('runnerForm/registro/dni/check', [App\Http\Controllers\RacetrackRecordController::class, 'checkRunnerForm'])->name('runnerCheckDni');
+Route::get('runnerForm/registro/dni/store', [App\Http\Controllers\RacetrackRecordController::class, 'storeRunnerForm'])->name('runnerStoreDni');
+Route::post('runnerForm/registro/register/check', [App\Http\Controllers\RacetrackRecordController::class, 'checkRunnerRegister'])->name('runnerCheckRegister');
+Route::get('runnerForm/registro/register/store', [App\Http\Controllers\RacetrackRecordController::class, 'storeRunnerRegister'])->name('runnerStoreRegister');
 Route::post('runnerForm/registro/total', [App\Http\Controllers\RacetrackRecordController::class, 'storeRunnerRegister']);
 Auth::routes();

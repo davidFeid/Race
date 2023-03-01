@@ -1,4 +1,4 @@
-<form method="POST" action="http://127.0.0.1:8000/runnerForm/registro/total"  role="form" enctype="multipart/form-data" class="row g-3">
+<form method="POST"  action="{{ route('runnerCheckRegister')}}"  role="form" enctype="multipart/form-data" class="row g-3">
 @csrf
     <h4>Register Runner</h4>
     <div class="col-md-12">
@@ -20,19 +20,19 @@
     <div class="col-md-12">
         <label for="federation" class="form-label">Federation</label>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="federation" id="federation0" value="0" onchange="document.getElementById('num_federation').disabled = true;" checked>
+            <input class="form-check-input" type="radio" name="federation" id="federation0" value="0" onchange="federationOff()" checked>
             <label class="form-check-label" for="federation0">
               No
             </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="federation" id="federation1" value="1" onchange="document.getElementById('num_federation').disabled = false;">
+          <input class="form-check-input" type="radio" name="federation" id="federation1" value="1" onchange="federationOn()">
           <label class="form-check-label" for="federation1">
             Yes
         </label>
         </div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12" style="display:none">
       <label for="num_federation" class="form-label">Num Federation</label>
       <input type="number" class="form-control" id="num_federation" name="num_federation" disabled required>
     </div>

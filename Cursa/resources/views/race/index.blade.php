@@ -39,13 +39,14 @@
 										<th>Description</th>
 										<th>Ramp</th>
 										<th>Max Participants</th>
+                                        <th>Race Price</th>
 										<th>Km</th>
 										<th>Date</th>
 										<th>Hour</th>
 										<th>Starting Point</th>
 										<th>Maps Image</th>
 										<th>Promotional Poster</th>
-										<th>Sponsor Price</th>
+                                        <th>Sponsor Price</th>
 										<th>Active</th>
 
                                         <th></th>

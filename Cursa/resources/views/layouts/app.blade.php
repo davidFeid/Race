@@ -18,6 +18,7 @@
 
     <!-- CSS -->
     <!--<link rel="stylesheet" href='resources/css/app.css' />-->
+    <script src="{{asset('js/totalPriceRace.js')}}"></script>
 </head>
 <body>
     <div id="app">

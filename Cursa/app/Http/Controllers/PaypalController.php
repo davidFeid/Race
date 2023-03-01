@@ -59,18 +59,13 @@ class PaypalController extends Controller
 
     public function PaymentSuccess(Request $request)
     {
-
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
         $provider->getAccessToken();
         $response = $provider->capturePaymentOrder($request['token']);
-
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
-
-
             return redirect()
-                ->route('paymentindex')
-                ->with('success','Transaction complete.');
+                ->route('runnerStoreDni');
 
         } else {
             return redirect()
