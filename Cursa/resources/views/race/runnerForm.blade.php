@@ -16,6 +16,10 @@
 @if(Session::has('error'))
   <div class="alert alert-danger">{{Session::get('error') }}</div>
 @endif
+@if(Session::has('success'))
+    <div class="alert alert-success">{{Session::get('success') }}</div>
+    {{-- <a href="{{ route('generatePDF.pdf')}}" class="btn btn-primary"> Generate invoice (PDF)</a> --}}
+@endif
 <p class="text-center">
   <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Register with ID</a>
   <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Register from scratch</button>
@@ -44,6 +48,9 @@
                     <input type="hidden" id="race_id" name="race_id" value="{{$id}}">
                     <input type="hidden" id="race_price" name="race_price" value="{{$race_price}}">
                     <input type="hidden" id="amount" name="amount">
+                    <div class="col-12">
+                      <h1>{{$race[0]->race_price}} €</h1>
+                    </div>
                     <div class="col-12">
                       <button class="btn btn-primary" type="submit" >Register</button>
                     </div>

@@ -64,7 +64,9 @@ class RacetrackRecordController extends Controller
         $runner['qr'] = $name;
         RacetrackRecord::create($runner);
         $request->session()->forget('array');
-        return redirect('http://127.0.0.1:8000/runnerForm/'.$runner['race_id']);
+        //return redirect('http://127.0.0.1:8000/runnerForm/'.$runner['race_id']);
+        return redirect('http://127.0.0.1:8000/runnerForm/'.$runner['race_id'])
+                ->with('success', $response['message'] ?? 'Transaction approved.');
     }
 
     public function checkRunnerRegister(Request $request){
