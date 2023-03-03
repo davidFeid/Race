@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * Class Runner
  *
- * @property $id
+ * @property $dni
  * @property $name
  * @property $address
  * @property $birth_date
@@ -54,7 +54,7 @@ class Runner extends Model
     {
         return $this->hasOne('App\Models\Placement', 'runner_dni', 'dni');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -62,6 +62,6 @@ class Runner extends Model
     {
         return $this->hasOne('App\Models\RacetrackRecord', 'runner_dni', 'dni');
     }
-    
+
 
 }

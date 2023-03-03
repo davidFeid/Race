@@ -39,6 +39,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RaceSponsorsTableSeeder::class
         ]);
+        //Create a new instance of RunnerSeeder
+        $this->call([
+            RunnersTableSeeder::class
+        ]);
 
     }
 }
