@@ -106,4 +106,5 @@ class RaceImageController extends Controller
         return redirect()->route('race-images.index')
             ->with('success', 'RaceImage deleted successfully');
     }
+
 }

@@ -6,7 +6,7 @@ use App\Http\Controllers\RaceController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\RacetrackRecordController;
 use App\Http\Controllers\PaypalController;
-use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\DropzoneController;
 
 
 /*
@@ -53,8 +53,9 @@ Route::controller(PaypalController::class)->group(function(){
 });
 
 //Image/File
-Route::get('upload-ui', [FileUploadController::class, 'dropzoneUi' ]);
-Route::post('file-upload', [FileUploadController::class, 'dropzoneFileUpload' ])->name('dropzoneFileUpload');
+Route::get('dropzone', [DropzoneController::class, 'dropzone']);
+Route::post('dropzone/store', [DropzoneController::class, 'dropzoneStore'])->name('dropzone.store');
+
 
 //Runners
 Route::get('runnerForm/{id}', [App\Http\Controllers\RacetrackRecordController::class, 'runnerForm']);
