@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -18,13 +19,15 @@ use Illuminate\Database\Eloquent\Model;
  */
 class RaceImage extends Model
 {
-    
+    use HasFactory;
+    protected $table = 'race_images';
     static $rules = [
 		'race_id' => 'required',
 		'race_image' => 'required',
     ];
 
     protected $perPage = 20;
+
 
     /**
      * Attributes that should be mass-assignable.
@@ -41,6 +44,6 @@ class RaceImage extends Model
     {
         return $this->hasOne('App\Models\Race', 'id', 'race_id');
     }
-    
+
 
 }
