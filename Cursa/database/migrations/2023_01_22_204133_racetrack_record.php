@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('racetrack_records', function (Blueprint $table) {
             $table->integer('race_id')->unsigned();
             $table->string('runner_dni',9);
-            $table->string('insurer_cif');
+            $table->string('insurer_cif')->nullable;
             $table->string('qr');
             $table->integer('dorsal');
             $table->time('time')->nullable();
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreign('runner_dni')->references('dni')->on('runners');
             $table->foreign('insurer_cif')->references('cif')->on('insurers');
             $table->foreign('race_id')->references('id')->on('races');
-            $table->primary(array('runner_dni', 'insurer_cif','qr','race_id'));
+            $table->primary(array('runner_dni','qr','race_id'));
             $table->timestamps();
         });
     }

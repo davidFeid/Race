@@ -29,7 +29,6 @@ class RacetrackRecord extends Model
     static $rules = [
 		'race_id' => 'required',
 		'runner_dni' => 'required',
-		'insurer_cif' => 'required',
 		'qr' => 'required',
 		'dorsal' => 'required'
     ];

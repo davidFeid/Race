@@ -38,15 +38,28 @@ class RacetrackRecordController extends Controller
     }
 
     public function checkRunnerForm(Request $request){
+        //dd($request->all());
         if(Runner::find($request->runner_dni)){
             if(RacetrackRecord::select('*')->where('runner_dni','=',$request->runner_dni)->where('race_id','=',$request->race_id)->count() > 0){
                 return redirect()
                     ->back()
                     ->with('error', 'Ya estas registrado como corredor.');
             }else{
-                $request->session()->put('array', $request->all());
-                dump($request->amount);
-                return view('paypal.index', ['amount' => $request->amount]);
+                if(isset($request->insurer_cif)){
+                    $request->session()->put('array', $request->all());
+                    return view('paypal.index', ['amount' => $request->amount]);
+                }else{
+                    $runner = Runner::find($request->runner_dni);
+                    
+                    if($runner->federation == 1){
+                        $request->session()->put('array', $request->all());
+                        return view('paypal.index', ['amount' => $request->amount]);
+                    }else{
+                        return redirect()
+                            ->back()
+                            ->with('error', 'No estas registrado como corredor federado');
+                    }
+                }
             }
         }else{
             return redirect()
@@ -57,8 +70,12 @@ class RacetrackRecordController extends Controller
 
     public function storeRunnerForm(Request $request){
         $runner = $request->session()->all()['array'];
-        $insurer = explode(",",$runner['insurer_cif']);
-        $runner['insurer_cif'] = $insurer[0];
+        if(isset($runner['insurer_cif'])){
+            $insurer = explode(",",$runner['insurer_cif']);
+            $runner['insurer_cif'] = $insurer[0];
+        }else{
+            $runner['insurer_cif'] = NULL;
+        }
         $name = $runner['runner_dni'].'_'.$runner['race_id'].'_qr.svg';
         QrCode::generate('http://127.0.0.1:8000/racetrack-record/'.$runner['race_id'].'/'.$runner['runner_dni'], '../public/qrcodes/'.$name);
         $runner['qr'] = $name;
@@ -72,22 +89,8 @@ class RacetrackRecordController extends Controller
     public function checkRunnerRegister(Request $request){
         request()->validate(Runner::$rules);
         if(!(Runner::find($request->dni))){
-            Runner::create($request->all());
-
-            request()->validate([
-                'dni' => 'required',
-                'insurer_cif' => 'required',
-                'dorsal' => 'required',
-                'race_id' => 'required'
-            ]);
-
-            $input = $request->all();
-            $name = $request->dni.'_'.$request->race_id.'_qr.svg';
-            QrCode::generate('http://127.0.0.1:8000/racetrack-record/'.$request->race_id.'/'.$request->dni, '../public/qrcodes/'.$name);
-            $input['qr'] = $name;
-            $input['runner_dni'] = $request->dni;
-            RacetrackRecord::create($input);
-            return redirect('http://127.0.0.1:8000/runnerForm/'.$request->race_id);
+            $request->session()->put('array', $request->all());
+            return view('paypal.index', ['amount' => $request->amount]);
         }else{
             return redirect()
                 ->back()
@@ -96,7 +99,29 @@ class RacetrackRecordController extends Controller
     }
 
     public function storeRunnerRegister(Request $request){
-        request()->validate(Runner::$rules);
+        $runner = $request->session()->all()['array'];
+        if($runner['federation'] == 1){
+            $runner['insurer_cif'] = NULL;
+        }else{
+            $insurer = explode(",",$runner['insurer_cif']);
+            $runner['insurer_cif'] = $insurer[0];
+        }
+        $name = $runner['dni'].'_'.$runner['race_id'].'_qr.svg';
+        QrCode::generate('http://127.0.0.1:8000/racetrack-record/'.$runner['race_id'].'/'.$runner['dni'], '../public/qrcodes/'.$name);
+        $runner['qr'] = $name;
+        $runner['runner_dni'] = $runner['dni'];
+        RacetrackRecord::create($runner);
+        $request->session()->forget('array');
+        //return redirect('http://127.0.0.1:8000/runnerForm/'.$runner['race_id']);
+        return redirect('http://127.0.0.1:8000/runnerForm/'.$runner['race_id'])
+                ->with('success', $response['message'] ?? 'Transaction approved.');
+
+
+
+
+
+
+        /*request()->validate(Runner::$rules);
         if(!(Runner::find($request->dni))){
             Runner::create($request->all());
 
@@ -116,6 +141,6 @@ class RacetrackRecordController extends Controller
             return redirect('http://127.0.0.1:8000/runnerForm/'.$request->race_id);
         }else{
             dd("Registro ya existente");
-        }
+        }*/
     }
 }

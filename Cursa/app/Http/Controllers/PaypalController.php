@@ -64,9 +64,14 @@ class PaypalController extends Controller
         $provider->getAccessToken();
         $response = $provider->capturePaymentOrder($request['token']);
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
-            return redirect()
-                ->route('runnerStoreDni')
-                ->with('success', $response['message'] ?? 'Transaction approved.');
+            $array = $request->session()->all()['array'];
+            if(isset($array['name'])){
+                return redirect()
+                    ->route('runnerStoreRegister');
+            }else{
+                return redirect()
+                    ->route('runnerStoreDni');
+            }
 
         } else {
             return redirect()
