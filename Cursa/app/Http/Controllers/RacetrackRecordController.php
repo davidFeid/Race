@@ -50,7 +50,7 @@ class RacetrackRecordController extends Controller
                     return view('paypal.index', ['amount' => $request->amount]);
                 }else{
                     $runner = Runner::find($request->runner_dni);
-                    
+
                     if($runner->federation == 1){
                         $request->session()->put('array', $request->all());
                         return view('paypal.index', ['amount' => $request->amount]);
@@ -69,10 +69,12 @@ class RacetrackRecordController extends Controller
     }
 
     public function storeRunnerForm(Request $request){
+
         $runner = $request->session()->all()['array'];
         if(isset($runner['insurer_cif'])){
             $insurer = explode(",",$runner['insurer_cif']);
             $runner['insurer_cif'] = $insurer[0];
+            dd("hola");
         }else{
             $runner['insurer_cif'] = NULL;
         }
@@ -82,6 +84,7 @@ class RacetrackRecordController extends Controller
         RacetrackRecord::create($runner);
         $request->session()->forget('array');
         //return redirect('http://127.0.0.1:8000/runnerForm/'.$runner['race_id']);
+
         return redirect('http://127.0.0.1:8000/runnerForm/'.$runner['race_id'])
                 ->with('success', $response['message'] ?? 'Transaction approved.');
     }
@@ -99,6 +102,7 @@ class RacetrackRecordController extends Controller
     }
 
     public function storeRunnerRegister(Request $request){
+
         $runner = $request->session()->all()['array'];
         if($runner['federation'] == 1){
             $runner['insurer_cif'] = NULL;
@@ -116,9 +120,7 @@ class RacetrackRecordController extends Controller
         return redirect('http://127.0.0.1:8000/runnerForm/'.$runner['race_id'])
                 ->with('success', $response['message'] ?? 'Transaction approved.');
 
-
-
-
+        /*Colocar boton de factura (pasar variable $response)*/
 
 
         /*request()->validate(Runner::$rules);

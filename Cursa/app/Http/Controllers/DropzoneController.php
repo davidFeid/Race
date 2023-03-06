@@ -26,7 +26,7 @@ class DropzoneController extends Controller
     public function dropzoneStore(Request $request)
     {
         $image = $request->file('file');
-        $imageName =$image->getClientOriginalName();
+        $imageName =$request->id.'_'.$image->getClientOriginalName();
         $image->move(public_path('images'),$imageName);
         $imgRaceImage=RaceImage::create([ 'race_id'=>$request->id, 'race_image'=>$imageName]);
 

@@ -78,7 +78,7 @@ class PaypalController extends Controller
             return redirect('http://127.0.0.1:8000/runnerForm/'.$runner['race_id'])
                 ->with('error', $response['message'] ?? 'Something went wrong.');
         }
-        generatePDF($response);
+
     }
 
     public function PaymentCancel()
