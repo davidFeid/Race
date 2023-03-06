@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use App\Models\RaceImage;
 
 class DropzoneController extends Controller
 {
@@ -14,6 +14,7 @@ class DropzoneController extends Controller
      */
     public function dropzone()
     {
+
         return view('dropzone-view');
     }
 
@@ -25,9 +26,12 @@ class DropzoneController extends Controller
     public function dropzoneStore(Request $request)
     {
         $image = $request->file('file');
-        $imageName = $image->getClientOriginalName();
+        $imageName =$image->getClientOriginalName();
         $image->move(public_path('images'),$imageName);
         $imgRaceImage=RaceImage::create([ 'race_id'=>$request->id, 'race_image'=>$imageName]);
+
         return response()->json(['success'=>$imageName]);
     }
 }
+
+?>

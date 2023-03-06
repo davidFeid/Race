@@ -14,9 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('race_images', function (Blueprint $table) {
-            $table->increments('race_id');
+            $table->integer('race_id')->unsigned();
             $table->string('race_image', 255);
             $table->foreign('race_id')->references('id')->on('races');
+            $table->primary(array('race_image','race_id'));
             $table->timestamps();
         });
     }

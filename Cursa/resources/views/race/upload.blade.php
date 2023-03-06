@@ -2,6 +2,7 @@
 
 <html>
 <head>
+
     <title>Drag & Drop File Uploading using Laravel 9 Dropzone JS - Tutsmake.com</title>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
@@ -19,10 +20,12 @@
 
             <form action="{{ route('dropzone.store') }}" method="post" enctype="multipart/form-data" id="image-upload" class="dropzone">
                 @csrf
+                <input type="hidden" name="id" value="{{$id}}">
                 <div>
                     <h3>Upload Multiple Image By Click On Box</h3>
                 </div>
             </form>
+
         </div>
     </div>
 </div>

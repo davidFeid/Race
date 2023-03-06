@@ -31,7 +31,7 @@
                                 <th>Points</th>
                                 <th>Insurer</th>
                             </tr>
-                           
+
                             @foreach ($runners as $runner)
                                 <tr>
                                     <td>{{$runner->runner->dni}}</td>
@@ -44,14 +44,15 @@
                                     <td>{{$runner->points}}</td>
                                     <td>{{$runner->insurer->name}}</td>
                                 </tr>
-                             
+
                             @endforeach
-                            
+
                         </table>
                     </div>
                 </div>
-               
+
                 @include('race.upload')
+
 
             </div>
         </div>
