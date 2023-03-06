@@ -90,7 +90,10 @@ class InsurerController extends Controller
         $racesN = RaceInsurer::select('race_id')->where('insurer_cif','!=',''.$id.'')->get();
         //RACES WHERE IS INSURERS
         $racesY = RaceInsurer::where('insurer_cif','=',''.$id.'')->get();
-        $allRaces = Race::whereNotIn('id',$racesY[0]->toArray())->get();
+        foreach($racesY as $id){
+            $races[] = $id->race_id;
+        }
+        $allRaces = Race::whereNotIn('id',$races)->get();
 
         return view('insurer.edit', compact('insurer','racesY','racesN','allRaces'));
     }
@@ -105,9 +108,15 @@ class InsurerController extends Controller
     public function update(Request $request, Insurer $insurer)
     {
         request()->validate(Insurer::$rules);
-
         $insurer->update($request->all());
-
+        if(isset($request->race)){
+            foreach ($request->race as $key => $value) {
+                $input['race_id'] = $key;
+                $input['insurer_cif'] = $request->cif;
+                $input['price'] = $value[1];
+                RaceInsurer::updateOrCreate($input);
+            }
+        }
         return redirect()->route('insurers.index')
             ->with('success', 'Insurer updated successfully');
     }

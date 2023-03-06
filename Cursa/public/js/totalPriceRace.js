@@ -108,3 +108,13 @@ function resetPriceRegister(){
     b.textContent = '';
     document.getElementById('amount_register').value = parseInt(racePrice);
 }
+
+//EDITAR INSURERS
+function checkInsurer($id){
+    if(document.getElementById($id).disabled == true){
+        document.getElementById($id).disabled = false
+    }else{
+        document.getElementById($id).disabled = true;
+        document.getElementById($id).value = '';
+    } 
+}

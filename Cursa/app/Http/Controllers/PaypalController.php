@@ -47,12 +47,12 @@ class PaypalController extends Controller
                     return redirect()->away($links['href']);
                 }
             }
-            return redirect()
-                ->route('paymentindex')
+            $runner = $request->session()->all()['array'];
+            return redirect('http://127.0.0.1:8000/runnerForm/'.$runner['race_id'])
                 ->with('error', 'Something went wrong.');
         } else {
-            return redirect()
-                ->route('paymentindex')
+            $runner = $request->session()->all()['array'];
+            return redirect('http://127.0.0.1:8000/runnerForm/'.$runner['race_id'])
                 ->with('error', $response['message'] ?? 'Something went wrong.');
         }
     }
@@ -74,8 +74,8 @@ class PaypalController extends Controller
             }
 
         } else {
-            return redirect()
-                ->route('paymentindex')
+            $runner = $request->session()->all()['array'];
+            return redirect('http://127.0.0.1:8000/runnerForm/'.$runner['race_id'])
                 ->with('error', $response['message'] ?? 'Something went wrong.');
         }
         generatePDF($response);
@@ -83,8 +83,8 @@ class PaypalController extends Controller
 
     public function PaymentCancel()
     {
-        return redirect()
-            ->route('paymentindex')
+        $runner = $request->session()->all()['array'];
+        return redirect('http://127.0.0.1:8000/runnerForm/'.$runner['race_id'])
             ->with('error', $response['message'] ?? 'You have cancelled the transaction.');
     }
 

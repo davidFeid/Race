@@ -42,7 +42,11 @@
                                     <td>{{$runner->dorsal}}</td>
                                     <td>{{$runner->time}}</td>
                                     <td>{{$runner->points}}</td>
-                                    <td>{{$runner->insurer->name}}</td>
+                                    @if(isset($runner->insurer->name))
+                                        <td>{{$runner->insurer->name}}</td>
+                                    @else
+                                        <td>Federado</td>
+                                    @endif
                                 </tr>
                              
                             @endforeach

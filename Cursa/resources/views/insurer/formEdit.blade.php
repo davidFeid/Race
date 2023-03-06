@@ -21,7 +21,7 @@
         <div class="form-group row row-cols-5">
             @foreach ($racesY as $race)
                 <div class="form-check form-switch col">
-                    <input class="form-check-input" type="checkbox" id="check{{$race->race->id}}" checked name="race[{{$race->race->id}}][]" onchange="(document.getElementById('{{$race->race->id}}').disabled == true) ? document.getElementById('{{$race->race->id}}').disabled = false: document.getElementById('{{$race->race->id}}').disabled = true;">
+                    <input class="form-check-input" type="checkbox" id="check{{$race->race->id}}" checked name="race[{{$race->race->id}}][]" onchange="checkInsurer('{{$race->race->id}}');">
                     <label class="form-check-label" for="check{{$race->race->id}}">Race - {{$race->race->id}}</label>
                     <br>
                     <label for="{{$race->race->id}}" class="form-label">Price</label>
@@ -35,7 +35,7 @@
         <div class="form-group row row-cols-5">
             @foreach ($allRaces as $race)
                 <div class="form-check form-switch col">
-                    <input class="form-check-input" type="checkbox" id="check{{$race->id}}" name="race[{{$race->id}}][]" onchange="(document.getElementById('{{$race->id}}').disabled == true) ? document.getElementById('{{$race->id}}').disabled = false: document.getElementById('{{$race->id}}').disabled = true;">
+                    <input class="form-check-input" type="checkbox" id="check{{$race->id}}" name="race[{{$race->id}}][]" onchange="checkInsurer('{{$race->id}}');">
                     <label class="form-check-label" for="check{{$race->id}}">Race - {{$race->id}}</label>
                     <br>
                     <label for="{{$race->id}}" class="form-label">Price</label>
@@ -48,4 +48,3 @@
         <button type="submit" class="btn btn-primary mt-2">Submit</button>
     </div>
 </div>
-{{$allRaces}}
