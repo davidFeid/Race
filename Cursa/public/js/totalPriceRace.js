@@ -118,3 +118,4 @@ function checkInsurer($id){
         document.getElementById($id).value = '';
     } 
 }
+
