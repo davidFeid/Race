@@ -22,7 +22,7 @@
 </head>
 <body>
     <div id="app">
-        @include('layouts.headerGeneral');
+        @include('layouts.headerGeneral')
         <main class="py-4">
             @yield('content')
         </main>

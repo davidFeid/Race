@@ -45,95 +45,36 @@
 }
 
 /*HEADER PUBLICO*/
-
-.navbar-brand {
-    font-size: 1.4em;
-  }
-  .navbar-dark .navbar-nav a.nav-link {
-    color: #ffffff;
-    font-size: 1.1em;
-  }
-  .dropdown-menu {
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    border: none;
-    border-radius: 0;
-    padding: 0.7em;
-  }
-  @media only screen and (min-width: 992px) {
-    .dropdown:hover .dropdown-menu {
-      display: flex;
+@media screen and (min-width: 992px) {
+    .navbar {
+      padding: 0;
     }
-    .dropdown-menu.show {
-      display: flex;
+    .navbar .navbar-nav .nav-link {
+      padding: 1em 0;
+      --bs-nav-link-color: white;
     }
-  }
-  .dropdown-menu ul {
-    list-style: none;
-    padding: 0;
-  }
-  .dropdown-menu li .dropdown-item {
-    color: gray;
-    font-size: 1em;
-    padding: 0.5em 1em;
-  }
-  .dropdown-menu li .dropdown-item:hover {
-    background-color: #f1f1f1;
-  }
-  .dropdown-menu li:first-child a {
-    font-weight: bold;
-    font-size: 1.1em;
-    text-transform: uppercase;
-    color: #516beb;
-  }
-  .dropdown-menu li:first-child a:hover {
-    background-color: #f1f1f1;
-  }
-  @media only screen and (max-width: 992px) {
-    .dropdown-menu.show {
-      flex-wrap: wrap;
-      max-height: 350px;
-      overflow-y: scroll;
-    }
-  }
-  @media only screen and (min-width: 992px) and (max-width: 1140px) {
-    .dropdown:hover .dropdown-menu {
-      width: 40vw;
-      flex-wrap: wrap;
+    .navbar .navbar-nav .nav-item {
+      margin: 0 1em;
     }
   }
   
-  .dropdown-menu {
-    border-radius: 0;
-    border: none;
-    padding: 0.5em;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+  .navbar .navbar-nav .nav-item {
+    position: relative;
   }
-  .dropdown-menu ul {
-    list-style: none;
-    padding: 0;
+  .navbar .navbar-nav .nav-item::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    content: "";
+    background-color: black;
+    width: 0%;
+    height: 4px;
+    transition: all 0.5s;
+  }
+  .navbar .navbar-nav .nav-item:hover::after {
+    width: 100%;
   }
   
-  .dropdown-menu li a {
-    color: gray;
-    padding: 0.5em 1em;
-  }
-  .dropdown-menu li:first-child a {
-    font-weight: bold;
-    font-size: 1.1em;
-    color: #516beb;
-  }
-  @media screen and (min-width: 993px) {
-    .dropdown:hover .dropdown-menu {
-      display: flex;
-    }
-    .dropdown-menu.show {
-      display: flex;
-    }
-  }
-  @media screen and (max-width: 992px) {
-    .dropdown-menu.show {
-      max-height: 60vh;
-      overflow-y: scroll;
-    }
-  }
 /*FIN HEADER PUBLICO*/
