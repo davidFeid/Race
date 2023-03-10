@@ -7,7 +7,7 @@ use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\RacetrackRecordController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\DropzoneController;
-
+use App\Http\Controllers\PDFController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,4 +64,6 @@ Route::get('runnerForm/registro/dni/store', [App\Http\Controllers\RacetrackRecor
 Route::post('runnerForm/registro/register/check', [App\Http\Controllers\RacetrackRecordController::class, 'checkRunnerRegister'])->name('runnerCheckRegister');
 Route::get('runnerForm/registro/register/store', [App\Http\Controllers\RacetrackRecordController::class, 'storeRunnerRegister'])->name('runnerStoreRegister');
 Route::post('runnerForm/registro/total', [App\Http\Controllers\RacetrackRecordController::class, 'storeRunnerRegister']);
-Auth::routes();
+
+//pdf
+Route::get('generate-pdf', [PDFController::class, 'generatePDF']);

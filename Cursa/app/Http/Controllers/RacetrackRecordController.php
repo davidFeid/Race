@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\RacetrackRecord;
 use Illuminate\Http\Request;
 use App\Models\Race;
