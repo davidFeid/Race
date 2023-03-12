@@ -20,15 +20,16 @@ use App\Http\Controllers\PDFController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+//Home
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 
 //Race
 Route::resource('races', RaceController::class)->middleware('auth');
+Route::get('racePage/{id}', [App\Http\Controllers\RaceController::class, 'racePage'])->name('racePage');
+Route::get('allRaces', [App\Http\Controllers\RaceController::class, 'allRace']);
 Auth::routes();
-
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 //Insurers
@@ -39,9 +40,6 @@ Auth::routes();
 //Sponsors
 Route::resource('sponsors',SponsorController::class)->middleware('auth');
 Auth::routes();
-
-//Home
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 //Paypal
@@ -58,12 +56,16 @@ Route::post('dropzone/store', [DropzoneController::class, 'dropzoneStore'])->nam
 
 
 //Runners
-Route::get('runnerForm/{id}', [App\Http\Controllers\RacetrackRecordController::class, 'runnerForm']);
+Route::get('runnerForm/{id}', [App\Http\Controllers\RacetrackRecordController::class, 'runnerForm'])->name('runnerForm');
 Route::post('runnerForm/registro/dni/check', [App\Http\Controllers\RacetrackRecordController::class, 'checkRunnerForm'])->name('runnerCheckDni');
 Route::get('runnerForm/registro/dni/store', [App\Http\Controllers\RacetrackRecordController::class, 'storeRunnerForm'])->name('runnerStoreDni');
 Route::post('runnerForm/registro/register/check', [App\Http\Controllers\RacetrackRecordController::class, 'checkRunnerRegister'])->name('runnerCheckRegister');
 Route::get('runnerForm/registro/register/store', [App\Http\Controllers\RacetrackRecordController::class, 'storeRunnerRegister'])->name('runnerStoreRegister');
 Route::post('runnerForm/registro/total', [App\Http\Controllers\RacetrackRecordController::class, 'storeRunnerRegister']);
 
+/* //Racetrack-record
+Route::get('racetrack-record/{id}/{dni}/', [App\Http\Controllers\RacetrackRecordController::class, 'racetrack-record']); */
+
+
 //pdf
-Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
+Route::get('generate-pdf', [PDFController::class, 'generatePDF'])->name('generatePDF');

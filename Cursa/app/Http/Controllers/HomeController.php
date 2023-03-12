@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\Race;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -21,8 +24,17 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('home');
+
+        $date = Carbon::now();
+        $date = $date->format('Y-m-d');
+
+        $races = Race::paginate();
+        $request->session()->put('key', 'value');
+        return view('home', compact('races'))
+            ->with('i', (request()->input('page', 1) - 1) * $races->perPage())
+            ->with('diaActual',$date);
+
     }
 }

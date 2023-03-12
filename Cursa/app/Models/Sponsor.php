@@ -26,7 +26,7 @@ class Sponsor extends Model
 {
     protected $primaryKey = "cif";
     protected $keyType = 'string';
-    
+
     static $rules = [
 		'cif' => 'required',
 		'name' => 'required',
@@ -37,7 +37,7 @@ class Sponsor extends Model
 		'total' => 'required',
 
     ];
-    
+
     protected $hidden = ['active'];
     protected $perPage = 20;
 
@@ -56,6 +56,12 @@ class Sponsor extends Model
     {
         return $this->hasMany('App\Models\RacetrackRecord', 'sponsor_cif', 'cif');
     }
-    
+   /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function raceSponsor()
+    {
+        return $this->hasMany('App\Models\RaceSponsor', 'race_id', 'id');
+    }
 
-}
+  }

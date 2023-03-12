@@ -34,6 +34,7 @@ class Race extends Model
     use HasFactory;
 
     static $rules = [
+
 		'description' => 'required',
 		'ramp' => 'required',
 		'max_participants' => 'required',
@@ -81,6 +82,14 @@ class Race extends Model
     public function raceInsurer()
     {
         return $this->hasMany('App\Models\RaceInsurer', 'race_id', 'id');
+    }
+
+      /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function raceSponsor()
+    {
+        return $this->hasMany('App\Models\RaceSponsor', 'race_id', 'id');
     }
 
 }

@@ -63,6 +63,11 @@ class PaypalController extends Controller
         $provider->setApiCredentials(config('paypal'));
         $provider->getAccessToken();
         $response = $provider->capturePaymentOrder($request['token']);
+
+        /* dd($response); */
+        /* return view('pdf.myPDF')->with('response',$response); */
+
+
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
             $array = $request->session()->all()['array'];
             if(isset($array['name'])){
@@ -76,7 +81,9 @@ class PaypalController extends Controller
         } else {
             $runner = $request->session()->all()['array'];
             return redirect('http://127.0.0.1:8000/runnerForm/'.$runner['race_id'])
-                ->with('error', $response['message'] ?? 'Something went wrong.');
+                ->with('error', $response['message'] ?? 'Something went wrong.', 'response',$response);
+
+
         }
 
     }

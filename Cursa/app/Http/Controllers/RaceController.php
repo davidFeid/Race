@@ -6,8 +6,11 @@ use App\Models\Race;
 use Illuminate\Http\Request;
 use App\Models\RacetrackRecord;
 use App\Models\Runner;
-
-
+use App\Models\RaceSponsor;
+use App\Models\Sponsor;
+use App\Models\raceImage;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 /**
  * Class RaceController
  * @package App\Http\Controllers
@@ -103,6 +106,7 @@ class RaceController extends Controller
     public function update(Request $request, Race $race)
     {
         request()->validate([
+            'name' => 'required',
             'description' => 'required',
 		    'ramp' => 'required',
 		    'max_participants' => 'required',
@@ -143,5 +147,26 @@ class RaceController extends Controller
         return view('race.runnerForm', compact('race'));
     }
 
+    public function racePage(Request $request)
+    {
+        $date = Carbon::now();
+        $date = $date->format('Y-m-d');
+        $race = Race::find($request->id);
+        $raceImage = raceImage::with('race')->where('race_id','=',$request->id)->get();
+        $sql ="SELECT sponsors.logo FROM `sponsors` INNER JOIN `race_sponsors` ON sponsors.cif = race_sponsors.sponsor_cif WHERE race_sponsors.race_id = '".$request->id."'";
+        $sponsorImage = DB::select($sql);
+        return view('race.racePage', compact('race','sponsorImage','raceImage','date'));
+    }
+
+    public function allRace(Request $request)
+    {
+
+        $races = Race::paginate();
+        $request->session()->put('key', 'value');
+        return view('race.allRaces', compact('races'))
+            ->with('i', (request()->input('page', 1) - 1) * $races->perPage());
+
+
+    }
 
 }

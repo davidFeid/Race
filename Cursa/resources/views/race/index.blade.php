@@ -35,7 +35,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>Id</th>
-
+                                        <th>Name</th>
 										<th>Description</th>
 										<th>Ramp</th>
 										<th>Max Participants</th>
@@ -56,7 +56,7 @@
                                     @foreach ($races as $race)
                                         <tr>
                                             <td>{{ $race->id }}</td>
-
+                                            <td>{{ $race->name }}</td>
 											<td>{{ $race->description }}</td>
 											<td>{{ $race->ramp }}</td>
 											<td>{{ $race->max_participants }}</td>

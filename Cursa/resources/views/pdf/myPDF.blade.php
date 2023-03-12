@@ -7,14 +7,30 @@
 <body>
 
 
-    <table class="table table-bordered">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-        </tr>
+    <div class="card-body">
+        <h2>Invoice of your order</h2>
+        <table class='table table-bordered'>
+            <tr>
+                <th>Order id</th>
+                <th>Status</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Price</th>
 
-    </table>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+
+             <tr>
+                 <td>{{$response['id']}}</td>
+                 <td>{{$response['status']}}</td>
+                 <td>{{$response['payment_source']['paypal']['name']['given_name']}}</td>
+                 <td>{{$response['payment_source']['paypal']['name']['surname']}}</td>
+                 <td>{{$response['purchase_units'][0]['payments']['captures'][0]['seller_receivable_breakdown']['gross_amount']['value']}}€</td>
+             </tr>
+
+        </table>
 
 </body>
 </html>

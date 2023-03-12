@@ -3,6 +3,11 @@
         <div class="row align-items-center">
             <div class="col">
                 <div class="form-group">
+                    {{ Form::label('name') }}
+                    {{ Form::text('name', $race->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Name']) }}
+                    {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+                </div>
+                <div class="form-group">
                     {{ Form::label('description') }}
                     {{ Form::text('description', $race->description, ['class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''), 'placeholder' => 'Description']) }}
                     {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
@@ -22,13 +27,14 @@
                     {{ Form::number('race_price', $race->race_price, ['class' => 'form-control' . ($errors->has('race_price') ? ' is-invalid' : ''), 'placeholder' => 'Sponsor Price']) }}
                     {!! $errors->first('race_price', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
+
+            </div>
+            <div class="col">
                 <div class="form-group">
                     {{ Form::label('km') }}
                     {{ Form::number('km', $race->km, ['class' => 'form-control' . ($errors->has('km') ? ' is-invalid' : ''), 'placeholder' => 'Km']) }}
                     {!! $errors->first('km', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
-            </div>
-            <div class="col">
                 <div class="form-group">
                     {{ Form::label('date') }}
                     {{ Form::date('date', $race->date, ['class' => 'form-control' . ($errors->has('date') ? ' is-invalid' : ''), 'placeholder' => 'Date']) }}

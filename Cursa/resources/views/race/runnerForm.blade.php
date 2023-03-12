@@ -18,7 +18,9 @@
 @endif
 @if(Session::has('success'))
     <div class="alert alert-success">{{Session::get('success') }}</div>
-    {{-- <a href="{{ route('generatePDF.pdf')}}" class="btn btn-primary"> Generate invoice (PDF)</a> --}}
+
+    <a href="{{ route('generatePDF')}}" class="btn btn-primary"> Generate invoice (PDF)</a>
+
 @endif
 <p class="text-center">
   <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Register with ID</a>
