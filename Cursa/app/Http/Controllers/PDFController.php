@@ -13,8 +13,15 @@ class PDFController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function generatePDF()
+    public function generatePDF($response)
     {
+
+        $separador = ",";
+        $arreglo = explode($separador, $response);
+   /*     dd($arreglo); */
+     $data = [
+        'arreglo' => $arreglo
+    ];
 
         $pdf = PDF::loadView('pdf.myPDF', $data);
 

@@ -7,6 +7,7 @@ use App\Models\Race;
 use App\Models\Runner;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
+
 /**
  * Class RacetrackRecordController
  * @package App\Http\Controllers
@@ -16,7 +17,9 @@ class RacetrackRecordController extends Controller
     public function runnerForm(Request $request)
     {
 
-        $response=$request->session()->get('response');
+        $response=($request->session()->get('response'));
+
+
         if(Race::find($request->id)){
             $race = Race::with('raceInsurer')->where('id','=',$request->id)->get();
             $countRunners = RacetrackRecord::select('*')->where('race_id','=',$request->id)->count();

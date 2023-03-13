@@ -18,8 +18,7 @@
 @endif
 @if(Session::has('success'))
     <div class="alert alert-success">{{Session::get('success') }}</div>
-
-    <a href="{{ route('generatePDF',$response['id'],$response['status'],$response['payment_source']['paypal']['name']['given_name'],$response['payment_source']['paypal']['name']['surname'],$response['purchase_units'][0]['payments']['captures'][0]['seller_receivable_breakdown']['gross_amount']['value'])}}" class="btn btn-primary"> Generate invoice (PDF)</a>
+    <a href="{{ route('generatePDF', $response['id'].','.$response['status'].','.$response['payment_source']['paypal']['name']['given_name'].','.$response['payment_source']['paypal']['name']['surname'].','.$response['purchase_units'][0]['payments']['captures'][0]['seller_receivable_breakdown']['gross_amount']['value'])}}" class="btn btn-primary"> Generate invoice (PDF)</a>
 
 @endif
 <p class="text-center">
