@@ -15,9 +15,8 @@ class RacetrackRecordController extends Controller
 {
     public function runnerForm(Request $request)
     {
-        $response =  $request->session()->get('response');
-        dump($response);
 
+        $response=$request->session()->get('response');
         if(Race::find($request->id)){
             $race = Race::with('raceInsurer')->where('id','=',$request->id)->get();
             $countRunners = RacetrackRecord::select('*')->where('race_id','=',$request->id)->count();
@@ -33,7 +32,7 @@ class RacetrackRecordController extends Controller
                 $lleno = true;
             }
             $runner = new Runner();
-            return view('race.runnerForm', compact('race','dorsal','id','runner','race_price','lleno', 'response'));
+            return view('race.runnerForm', compact('race','dorsal','id','runner','race_price','lleno','response'));
         }else{
             return redirect('http://127.0.0.1:8000');
         }
@@ -41,6 +40,7 @@ class RacetrackRecordController extends Controller
 
     public function checkRunnerForm(Request $request){
         //dd($request->all());
+
         if(Runner::find($request->runner_dni)){
             if(RacetrackRecord::select('*')->where('runner_dni','=',$request->runner_dni)->where('race_id','=',$request->race_id)->count() > 0){
                 return redirect()
@@ -72,6 +72,7 @@ class RacetrackRecordController extends Controller
     }
 
     public function storeRunnerForm(Request $request){
+
         $runner = $request->session()->all()['array'];
         if(isset($runner['insurer_cif'])){
             $insurer = explode(",",$runner['insurer_cif']);

@@ -64,7 +64,7 @@ class PaypalController extends Controller
         $provider->getAccessToken();
         $response = $provider->capturePaymentOrder($request['token']);
 
-        /* dd($response); */
+
         /* return view('pdf.myPDF')->with('response',$response); */
 
 
@@ -73,11 +73,11 @@ class PaypalController extends Controller
             if(isset($array['name'])){
                 return redirect()
                     ->route('runnerStoreRegister')
-                    ->with('response', $response);
+                    ->with('response' ,$response);
             }else{
                 return redirect()
                     ->route('runnerStoreDni')
-                    ->with('response', $response);
+                    ->with('response' ,$response);
             }
 
         } else {

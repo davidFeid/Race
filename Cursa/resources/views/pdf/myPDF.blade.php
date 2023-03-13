@@ -24,10 +24,10 @@
 
              <tr>
                  <td>{{$response['id']}}</td>
-                 <td>{{$response['status']}}</td>
-                 <td>{{$response['payment_source']['paypal']['name']['given_name']}}</td>
-                 <td>{{$response['payment_source']['paypal']['name']['surname']}}</td>
-                 <td>{{$response['purchase_units'][0]['payments']['captures'][0]['seller_receivable_breakdown']['gross_amount']['value']}}€</td>
+                 <td>{{$response2['status']}}</td>
+                 <td>{{$response3['payment_source']['paypal']['name']['given_name']}}</td>
+                 <td>{{$response4['payment_source']['paypal']['name']['surname']}}</td>
+                 <td>{{$response5['purchase_units'][0]['payments']['captures'][0]['seller_receivable_breakdown']['gross_amount']['value']}}€</td>
              </tr>
 
         </table>

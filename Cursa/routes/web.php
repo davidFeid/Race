@@ -23,7 +23,7 @@ use App\Http\Controllers\PDFController;
 
 
 //Home
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('', [App\Http\Controllers\HomeController::class, 'index']);
 
 //Race
 Route::resource('races', RaceController::class)->middleware('auth');
@@ -68,4 +68,4 @@ Route::get('racetrack-record/{id}/{dni}/', [App\Http\Controllers\RacetrackRecord
 
 
 //pdf
-Route::get('generate-pdf', [PDFController::class, 'generatePDF'])->name('generatePDF');
+Route::get('generatePDF/{response}/{response2}/{response3}/{response4}/{response5}/', [PDFController::class, 'generatePDF'])->name('generatePDF');
