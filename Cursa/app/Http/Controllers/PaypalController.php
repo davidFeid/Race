@@ -72,16 +72,18 @@ class PaypalController extends Controller
             $array = $request->session()->all()['array'];
             if(isset($array['name'])){
                 return redirect()
-                    ->route('runnerStoreRegister');
+                    ->route('runnerStoreRegister')
+                    ->with('response', $response);
             }else{
                 return redirect()
-                    ->route('runnerStoreDni');
+                    ->route('runnerStoreDni')
+                    ->with('response', $response);
             }
 
         } else {
             $runner = $request->session()->all()['array'];
             return redirect('http://127.0.0.1:8000/runnerForm/'.$runner['race_id'])
-                ->with('error', $response['message'] ?? 'Something went wrong.', 'response',$response);
+                ->with('error', $response['message'] ?? 'Something went wrong.');
 
 
         }

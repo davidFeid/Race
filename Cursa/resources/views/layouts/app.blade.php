@@ -22,7 +22,15 @@
 </head>
 <body>
     <div id="app">
-        @include('layouts.headerGeneral')
+        @auth
+            @include('layouts.headerAdmin')
+        @endauth 
+
+        @guest
+            @include('layouts.headerGeneral')
+        @endguest
+
+        
         <main class="py-4">
             @yield('content')
         </main>
