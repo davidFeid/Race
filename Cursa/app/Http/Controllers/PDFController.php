@@ -19,9 +19,9 @@ class PDFController extends Controller
         $separador = ",";
         $arreglo = explode($separador, $response);
    /*     dd($arreglo); */
-     $data = [
-        'arreglo' => $arreglo
-    ];
+        $data = [
+            'arreglo' => $arreglo
+        ];
 
         $pdf = PDF::loadView('pdf.myPDF', $data);
 

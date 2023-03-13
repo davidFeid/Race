@@ -25,8 +25,7 @@
 
              <tr>
                 @foreach ($arreglo as $runner => $value)
-                 <td>{{$value}}</td>
-
+                    <td>{{$value}}</td>
                  @endforeach
              </tr>
 
