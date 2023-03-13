@@ -13,17 +13,11 @@ class PDFController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function generatePDF()
+    public function generatePDF(Request $request)
     {
-        $users = User::get();
 
-        $data = [
-            'title' => 'Welcome to ItSolutionStuff.com',
-            'date' => date('m/d/Y'),
-            'users' => $users
-        ];
 
-        $pdf = PDF::loadView('pdf.myPDF', $data);
+        $pdf = PDF::loadView('pdf.myPDF', $response);
 
         return $pdf->download('itsolutionstuff.pdf');
     }

@@ -15,6 +15,8 @@ class RacetrackRecordController extends Controller
 {
     public function runnerForm(Request $request)
     {
+
+        $response=$request->session()->get('response');
         if(Race::find($request->id)){
             $race = Race::with('raceInsurer')->where('id','=',$request->id)->get();
             $countRunners = RacetrackRecord::select('*')->where('race_id','=',$request->id)->count();
@@ -30,7 +32,7 @@ class RacetrackRecordController extends Controller
                 $lleno = true;
             }
             $runner = new Runner();
-            return view('race.runnerForm', compact('race','dorsal','id','runner','race_price','lleno'));
+            return view('race.runnerForm', compact('race','dorsal','id','runner','race_price','lleno','response'));
         }else{
             return redirect('http://127.0.0.1:8000');
         }
@@ -87,7 +89,8 @@ class RacetrackRecordController extends Controller
         //return redirect('http://127.0.0.1:8000/runnerForm/'.$runner['race_id']);
 
         return redirect('http://127.0.0.1:8000/runnerForm/'.$runner['race_id'])
-                ->with('success', $response['message'] ?? 'Transaction approved.');
+                ->with('success', $response['message'] ?? 'Transaction approved.')
+                ->with('response', $request->session()->get('response'));
     }
 
     public function checkRunnerRegister(Request $request){
