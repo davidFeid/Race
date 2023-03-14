@@ -145,12 +145,14 @@ class RacetrackRecordController extends Controller
         if( $race->date == $dateDais && $race->hour < $dateHours ){
 
             $count = RacetrackRecord::where('race_id','=',$request->id)->where('points','!=',NULL)->count();
-            if($count < 10){
-
-                $race = RacetrackRecord::where('race_id','=',$request->id)->where('runner_dni','=',$request->dni)->update(['points' =>  $arrayPoitns[$count], 'time' =>   $date->diff($race->hour )->format('%H:%I:%S')]);
-            }else{
+            //if($count < 10){
+                $racetrackRecord = RacetrackRecord::where('race_id','=',$request->id)->where('runner_dni','=',$request->dni)->first();
+                $racetrackRecord->points = $arrayPoitns[$count+1] ?? 0;
+                $racetrackRecord->time = $date->diff($race->hour )->format('%H:%I:%S');
+                $racetrackRecord->save();
+            /*}else{
                 $race = RacetrackRecord::where('race_id','=',$request->id)->where('runner_dni','=',$request->dni)->update(['points' =>  0, 'time' =>   $date->diff($race->hour )->format('%H:%I:%S')]);
-            }
+            }*/
 
         }else{
             dd('fuera del rango de fechas');

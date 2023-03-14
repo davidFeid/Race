@@ -36,6 +36,8 @@ class RacetrackRecord extends Model
 
     protected $perPage = 20;
 
+    protected $primaryKey = 'race_id';
+
     /**
      * Attributes that should be mass-assignable.
      *

@@ -5,6 +5,13 @@
     @endsection
 
     @section('content')
+
+    <!--SCRIPTS-->
+    <link href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+    <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'></script>
+
     <div class="super_container">
         <header class="header" style="display: none;">
             <div class="header_main">
@@ -77,26 +84,61 @@
                             </div>
                         </div>
                     </div>
-                <div class="container text-center my-3">
-                    <div class="row blog">
-                        <div class="col-md-12">
-                            <div id="blogCarousel" class="carousel slide" data-ride="carousel">
-                                <div class="carousel-inner">
-                                    <h2 class="font-weight-light">GALLERY</h2>
-                                    <div class="carousel-item active">
-                                        <div class="row">
-                                            @foreach ($raceImage->slice(0,4) as $raceImages)
-                                                <div class="col-md-3">
-                                                    <img src="/images/{{ $raceImages->race_image }}" width="100px">
+                    @if(count($raceImage) > 0)
+                    <div class="container py-5">
+                        <section class="pt-5 pb-5">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <h3 class="mb-3">Gallery</h3>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                            <i class="fa fa-arrow-left"></i>
+                                        </a>
+                                        <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators" role="button" data-slide="next">
+                                            <i class="fa fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-12">
+                                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active">
+                                                    <div class="row">
+                                                        @for($i = 0; $i < 3; $i++)
+                                                            @if(isset($raceImage[$i]))
+                                                                <div class="col-md-4 mb-3">
+                                                                    <div class="card">
+                                                                        <img class="img-fluid p-2" alt="100%x280" src="/images/{{$raceImage[$i]->race_image}}">
+                                                                    </div>
+                                                                </div>
+                                                            @endif
+                                                        @endfor
+                                                    </div>
                                                 </div>
-                                            @endforeach
+                                                @for ($i = 1; $i < intval(ceil((count($raceImage)-3)/3)+1); $i++)
+                                                <div class="carousel-item">
+                                                    <div class="row">
+                                                        @for($j = intval($i*3); $j < intval(($i*3)+3); $j++)
+                                                            @if(isset($raceImage[$j]))
+                                                                <div class="col-md-4 mb-3">
+                                                                    <div class="card">
+                                                                        <img class="img-fluid" alt="100%x280" src="/images/{{$raceImage[$j]->race_image}}">
+                                                                    </div>
+                                                                </div>
+                                                            @endif
+                                                        @endfor
+                                                    </div>
+                                                </div>
+                                                @endfor
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </section>
                     </div>
-                </div>
+                    @endif
             </div>
         </div>
     </div>
