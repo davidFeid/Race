@@ -68,8 +68,8 @@ Route::post('runnerForm/registro/register/check', [App\Http\Controllers\Racetrac
 Route::get('runnerForm/registro/register/store', [App\Http\Controllers\RacetrackRecordController::class, 'storeRunnerRegister'])->name('runnerStoreRegister');
 Route::post('runnerForm/registro/total', [App\Http\Controllers\RacetrackRecordController::class, 'storeRunnerRegister']);
 
-/* //Racetrack-record
-Route::get('racetrack-record/{id}/{dni}/', [App\Http\Controllers\RacetrackRecordController::class, 'racetrack-record']); */
+//Racetrack-record
+Route::get('racetrackRecord/{id}/{dni}/', [App\Http\Controllers\RacetrackRecordController::class, 'racetrackRecord'])->name('racetrackRecord');
 
 
 //pdf

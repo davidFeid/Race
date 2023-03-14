@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Race;
 use App\Models\Runner;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Carbon\Carbon;
 
 
 /**
@@ -17,7 +18,8 @@ class RacetrackRecordController extends Controller
     public function runnerForm(Request $request)
     {
 
-        $response = $request->session()->get('response');
+        $response=($request->session()->get('response'));
+
 
         if(Race::find($request->id)){
             $race = Race::with('raceInsurer')->where('id','=',$request->id)->get();
@@ -88,6 +90,8 @@ class RacetrackRecordController extends Controller
         $runner['qr'] = $name;
         RacetrackRecord::create($runner);
         $request->session()->forget('array');
+        //return redirect('http://127.0.0.1:8000/runnerForm/'.$runner['race_id']);
+
         return redirect('http://127.0.0.1:8000/runnerForm/'.$runner['race_id'])
                 ->with('success', $response['message'] ?? 'Transaction approved.')
                 ->with('response', $request->session()->get('response'));
@@ -108,7 +112,6 @@ class RacetrackRecordController extends Controller
     public function storeRunnerRegister(Request $request){
 
         $runner = $request->session()->all()['array'];
-        Runner::create($runner);
         if($runner['federation'] == 1){
             $runner['insurer_cif'] = NULL;
         }else{
@@ -116,39 +119,42 @@ class RacetrackRecordController extends Controller
             $runner['insurer_cif'] = $insurer[0];
         }
         $name = $runner['dni'].'_'.$runner['race_id'].'_qr.svg';
-        QrCode::generate('http://127.0.0.1:8000/racetrack-record/'.$runner['race_id'].'/'.$runner['dni'], '../public/qrcodes/'.$name);
+        QrCode::generate('http://127.0.0.1:8000/racetrackRecord/'.$runner['race_id'].'/'.$runner['dni'], '../public/qrcodes/'.$name);
         $runner['qr'] = $name;
         $runner['runner_dni'] = $runner['dni'];
         RacetrackRecord::create($runner);
         $request->session()->forget('array');
+
         //return redirect('http://127.0.0.1:8000/runnerForm/'.$runner['race_id']);
         return redirect('http://127.0.0.1:8000/runnerForm/'.$runner['race_id'])
-                ->with('success', $response['message'] ?? 'Transaction approved.')
-                ->with('response', $request->session()->get('response'));;
 
-        /*Colocar boton de factura (pasar variable $response)*/
-
-
-        /*request()->validate(Runner::$rules);
-        if(!(Runner::find($request->dni))){
-            Runner::create($request->all());
-
-            request()->validate([
-                'dni' => 'required',
-                'insurer_cif' => 'required',
-                'dorsal' => 'required',
-                'race_id' => 'required'
-            ]);
-
-            $input = $request->all();
-            $name = $request->dni.'_'.$request->race_id.'_qr.svg';
-            QrCode::generate('http://127.0.0.1:8000/racetrack-record/'.$request->race_id.'/'.$request->dni, '../public/qrcodes/'.$name);
-            $input['qr'] = $name;
-            $input['runner_dni'] = $request->dni;
-            RacetrackRecord::create($input);
-            return redirect('http://127.0.0.1:8000/runnerForm/'.$request->race_id);
-        }else{
-            dd("Registro ya existente");
-        }*/
+                ->with('success', $response['message'] ?? 'Transaction approved.');
     }
+
+
+    public function racetrackRecord(Request $request){
+        /* 25 puntos al primer, 18 al segundo, 15 al tercero, 12 al cuarto, 10 al quinto, 8 al sexto, 6 al séptimo, 4 al octavo, 2 al noveno y 1 al décimo.*/
+        $arrayPoitns = [1=>25, 2=>18, 3=>15, 4=>12, 5=>10, 6=>8, 7=>6, 8=>4, 9=>2, 10=>1];
+
+        $race = Race::find($request->id);
+
+        $date = Carbon::now();
+        $dateDais = $date->format('Y-m-d');
+        $dateHours = $date->format('h:i:s');
+
+        if( $race->date == $dateDais && $race->hour < $dateHours ){
+
+            $count = RacetrackRecord::where('race_id','=',$request->id)->where('points','!=',NULL)->count();
+            if($count < 10){
+
+                $race = RacetrackRecord::where('race_id','=',$request->id)->where('runner_dni','=',$request->dni)->update(['points' =>  $arrayPoitns[$count], 'time' =>   $date->diff($race->hour )->format('%H:%I:%S')]);
+            }else{
+                $race = RacetrackRecord::where('race_id','=',$request->id)->where('runner_dni','=',$request->dni)->update(['points' =>  0, 'time' =>   $date->diff($race->hour )->format('%H:%I:%S')]);
+            }
+
+        }else{
+            dd('fuera del rango de fechas');
+        }
+
+   }
 }
