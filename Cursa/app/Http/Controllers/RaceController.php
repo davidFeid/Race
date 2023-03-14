@@ -169,4 +169,20 @@ class RaceController extends Controller
 
     }
 
+    public function raceSearch(Request $request)
+    {
+        $busqueda = $request->race;
+        $races = Race::where('description','LIKE','%'.$request->race.'%')->get();
+        return view('race.search', compact('races','busqueda'));
+    }
+
+    public function gallery()
+    {
+        $date = Carbon::now();
+        $date = $date->format('Y-m-d');
+        $races = Race::with('raceimage')->where('date','<',$date)->orderBy('date', 'desc')->get();
+        //dd(intval(ceil(count($races[2]['raceimage'])/3)));
+        return view('race.gallery', compact('races'));
+    }
+
 }

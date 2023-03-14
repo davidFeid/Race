@@ -37,4 +37,9 @@ class HomeController extends Controller
             ->with('diaActual',$date);
 
     }
+
+    public function homeAdmin()
+    {
+        return view('admin/home-admin');
+    }
 }

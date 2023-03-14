@@ -25,10 +25,15 @@ use App\Http\Controllers\PDFController;
 //Home
 Route::get('', [App\Http\Controllers\HomeController::class, 'index']);
 
+//Home Admin
+Route::get('/home-admin', [App\Http\Controllers\HomeController::class, 'homeAdmin'])->name('home-admin')->middleware('auth');
+
 //Race
 Route::resource('races', RaceController::class)->middleware('auth');
 Route::get('racePage/{id}', [App\Http\Controllers\RaceController::class, 'racePage'])->name('racePage');
 Route::get('allRaces', [App\Http\Controllers\RaceController::class, 'allRace']);
+Route::post('search/races', [App\Http\Controllers\RaceController::class, 'raceSearch'])->name('raceSearch');
+Route::get('gallery', [App\Http\Controllers\RaceController::class, 'gallery'])->name('gallery');
 Auth::routes();
 
 

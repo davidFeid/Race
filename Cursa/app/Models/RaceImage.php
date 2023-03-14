@@ -38,11 +38,11 @@ class RaceImage extends Model
 
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function race()
     {
-        return $this->hasOne('App\Models\Race', 'id', 'race_id');
+        return $this->hasMany('App\Models\Race', 'id', 'race_id');
     }
 
 
