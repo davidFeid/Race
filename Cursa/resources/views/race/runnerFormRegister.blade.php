@@ -10,6 +10,21 @@
       <input type="text" class="form-control" id="name" name="name" required>
     </div>
     <div class="col-md-12">
+        <label for="sex" class="form-label">Sex</label>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="sex" id="sex_male" value="male" checked >
+            <label class="form-check-label" for="sex_male">
+              Male
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="sex" id="sex_famele" value="famele" >
+          <label class="form-check-label" for="sex_famele">
+            Famele
+        </label>
+        </div>
+    </div>
+    <div class="col-md-12">
       <label for="address" class="form-label">Address</label>
       <input type="text" class="form-control" id="address" name="address" required>
     </div>

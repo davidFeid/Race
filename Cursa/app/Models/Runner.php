@@ -30,6 +30,7 @@ class Runner extends Model
     static $rules = [
         'dni' => 'required',
 		'name' => 'required',
+        'sex' =>'required',
 		'address' => 'required',
 		'birth_date' => 'required',
 		'federation' => 'required'
@@ -44,7 +45,7 @@ class Runner extends Model
      *
      * @var array
      */
-    protected $fillable = ['dni','name','address','birth_date','federation','num_federation'];
+    protected $fillable = ['dni','name','sex','address','birth_date','federation','num_federation'];
 
 
     /**

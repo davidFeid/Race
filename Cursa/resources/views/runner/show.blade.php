@@ -19,10 +19,14 @@
                     </div>
 
                     <div class="card-body">
-                        
+
                         <div class="form-group">
                             <strong>Name:</strong>
                             {{ $runner->name }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Sex:</strong>
+                            {{ $runner->sex }}
                         </div>
                         <div class="form-group">
                             <strong>Address:</strong>

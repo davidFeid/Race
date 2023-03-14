@@ -34,7 +34,7 @@ class Race extends Model
     use HasFactory;
 
     static $rules = [
-
+        'name'=>'required',
 		'description' => 'required',
 		'ramp' => 'required',
 		'max_participants' => 'required',
@@ -57,7 +57,7 @@ class Race extends Model
      *
      * @var array
      */
-    protected $fillable = ['id','description','ramp','max_participants','race_price','km','date','hour','starting_point','maps_image','promotional_poster','sponsor_price','active'];
+    protected $fillable = ['id','name','description','ramp','max_participants','race_price','km','date','hour','starting_point','maps_image','promotional_poster','sponsor_price','active'];
 
 
     /**

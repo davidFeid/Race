@@ -16,7 +16,7 @@ class RacesTableSeeder extends Seeder
     {
         //Race1
         $race1 = new Race;
-        $race1 ->name = "Barcelona";
+        $race1 -> name = "Barcelona";
         $race1 -> description = 'Su variedad paisajística y sus carreteras asfaltadas las convierten en uno de los lugares más interesantes de la península para los amantes de este deporte';
         $race1 -> ramp = 450;
         $race1 -> max_participants = '100';
@@ -32,7 +32,7 @@ class RacesTableSeeder extends Seeder
 
         //Race2
         $race2 = new Race;
-        $race2 ->name = "Madrid";
+        $race2 -> name = "Madrid";
         $race2 -> description = 'Muy pronto toda la información estará disponible';
         $race2 -> ramp = 0;
         $race2 -> max_participants = '0';

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('runners', function (Blueprint $table) {
             $table->string('dni',9);
             $table->string('name');
-            $table->string('sex');
+            $table->enum('sex',['male','famele']);
             $table->string('address');
             $table->date('birth_date');
             $table->enum('federation',['0','1']);

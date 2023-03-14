@@ -35,8 +35,8 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
 										<th>Name</th>
+                                        <th>Sex</th>
 										<th>Address</th>
 										<th>Birth Date</th>
 										<th>Federation</th>
@@ -49,8 +49,9 @@
                                     @foreach ($runners as $runner)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
+
 											<td>{{ $runner->name }}</td>
+                                            <td>{{ $runner->sex }}</td>
 											<td>{{ $runner->address }}</td>
 											<td>{{ $runner->birth_date }}</td>
 											<td>{{ $runner->federation }}</td>
