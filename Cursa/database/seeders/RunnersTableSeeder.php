@@ -21,7 +21,7 @@ class RunnersTableSeeder extends Seeder
          $runner1 -> sex= 'male';
          $runner1 -> address = 'Av Lucas XII';
          $runner1 -> birth_date = '1997-02-20';
-         $runner1 -> federation = 1;
+         $runner1 -> federation = '1';
          $runner1 -> num_federation = 111111;
          $runner1 -> save();
 
@@ -32,7 +32,7 @@ class RunnersTableSeeder extends Seeder
           $runner2 -> sex= 'male';
           $runner2 -> address = 'Av Alfonso XIII';
           $runner2 -> birth_date = '1998-02-20';
-          $runner2 -> federation = 1;
+          $runner2 -> federation = '1';
           $runner2 -> num_federation = 111111;
           $runner2 -> save();
     }

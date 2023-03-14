@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('racetrack_records', function (Blueprint $table) {
             $table->integer('race_id')->unsigned();
             $table->string('runner_dni',9);
-            $table->string('insurer_cif')->nullable;
+            $table->string('insurer_cif')->nullable();
             $table->string('qr');
             $table->integer('dorsal');
             $table->time('time')->nullable();

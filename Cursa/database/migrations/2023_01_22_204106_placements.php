@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('runner_dni',9);
             $table->integer('points')->unsigned();
             $table->foreign('runner_dni')->references('dni')->on('runners');
+            $table->primary('runner_dni');
             $table->timestamps();
         });
     }

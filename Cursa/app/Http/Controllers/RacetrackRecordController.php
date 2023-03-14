@@ -17,8 +17,7 @@ class RacetrackRecordController extends Controller
     public function runnerForm(Request $request)
     {
 
-        $response=($request->session()->get('response'));
-
+        $response = $request->session()->get('response');
 
         if(Race::find($request->id)){
             $race = Race::with('raceInsurer')->where('id','=',$request->id)->get();
@@ -89,8 +88,6 @@ class RacetrackRecordController extends Controller
         $runner['qr'] = $name;
         RacetrackRecord::create($runner);
         $request->session()->forget('array');
-        //return redirect('http://127.0.0.1:8000/runnerForm/'.$runner['race_id']);
-
         return redirect('http://127.0.0.1:8000/runnerForm/'.$runner['race_id'])
                 ->with('success', $response['message'] ?? 'Transaction approved.')
                 ->with('response', $request->session()->get('response'));
@@ -111,6 +108,7 @@ class RacetrackRecordController extends Controller
     public function storeRunnerRegister(Request $request){
 
         $runner = $request->session()->all()['array'];
+        Runner::create($runner);
         if($runner['federation'] == 1){
             $runner['insurer_cif'] = NULL;
         }else{
@@ -123,11 +121,10 @@ class RacetrackRecordController extends Controller
         $runner['runner_dni'] = $runner['dni'];
         RacetrackRecord::create($runner);
         $request->session()->forget('array');
-
         //return redirect('http://127.0.0.1:8000/runnerForm/'.$runner['race_id']);
         return redirect('http://127.0.0.1:8000/runnerForm/'.$runner['race_id'])
-
-                ->with('success', $response['message'] ?? 'Transaction approved.');
+                ->with('success', $response['message'] ?? 'Transaction approved.')
+                ->with('response', $request->session()->get('response'));;
 
         /*Colocar boton de factura (pasar variable $response)*/
 

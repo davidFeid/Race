@@ -172,7 +172,7 @@ class RaceController extends Controller
     public function raceSearch(Request $request)
     {
         $busqueda = $request->race;
-        $races = Race::where('description','LIKE','%'.$request->race.'%')->get();
+        $races = Race::where('name','LIKE','%'.$request->race.'%')->get();
         return view('race.search', compact('races','busqueda'));
     }
 
