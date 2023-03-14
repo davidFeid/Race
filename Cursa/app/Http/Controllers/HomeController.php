@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Race;
+use App\Models\Sponsor;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -29,12 +30,13 @@ class HomeController extends Controller
 
         $date = Carbon::now();
         $date = $date->format('Y-m-d');
-
+        $sponsor = Sponsor::paginate();
         $races = Race::paginate();
         $request->session()->put('key', 'value');
         return view('home', compact('races'))
             ->with('i', (request()->input('page', 1) - 1) * $races->perPage())
-            ->with('diaActual',$date);
+            ->with('diaActual',$date)
+            ->with('sponsorImage',$sponsor);
 
     }
 

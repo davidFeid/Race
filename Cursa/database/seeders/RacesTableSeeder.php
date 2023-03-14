@@ -16,13 +16,13 @@ class RacesTableSeeder extends Seeder
     {
         //Race1
         $race1 = new Race;
-        $race1 -> name = "Barcelona";
-        $race1 -> description = 'Su variedad paisajística y sus carreteras asfaltadas las convierten en uno de los lugares más interesantes de la península para los amantes de este deporte';
+        $race1 -> name = "Transpyr";
+        $race1 -> description = 'The famous race from the Mediterranean to the Bay of Biscay in 7 consecutive stages crossing the Pyrenees is the most physically and mentally demanding. With a route of about 800 kilometers and almost 20,000 meters of accumulated unevenness, there are plenty of explanations for why the organizers insist that those who want to participate have to be aware of their limitations and be prepared for the test.';
         $race1 -> ramp = 450;
         $race1 -> max_participants = '100';
         $race1 -> race_price = 100;
         $race1 -> km = 432;
-        $race1 -> date = '2023-02-20';
+        $race1 -> date = '2023-03-16';
         $race1 -> hour = '06:00:00';
         $race1 -> starting_point = 'La Sierra de Cazorla';
         $race1 -> maps_image  = '20230204101753.png';
@@ -32,13 +32,13 @@ class RacesTableSeeder extends Seeder
 
         //Race2
         $race2 = new Race;
-        $race2 -> name = "Madrid";
-        $race2 -> description = 'Muy pronto toda la información estará disponible';
-        $race2 -> ramp = 0;
-        $race2 -> max_participants = '0';
+        $race2 -> name = "Andalucia Bike Race";
+        $race2 -> description = 'The Andalucía Bike Race owes its fame to its eight editions of high participation and impressive routes between the provinces of Jaén and Córdoba. The participants say that it is one of the best organized races thanks to the planning of its circular routes, the comfortable accommodation and all the services that the race offers.';
+        $race2 -> ramp = 630;
+        $race2 -> max_participants = '50';
         $race2 -> race_price = 260;
-        $race2 -> km = 0;
-        $race2 -> date = '2023-02-04';
+        $race2 -> km = 380;
+        $race2 -> date = '2023-04-04';
         $race2 -> hour = '00:00:00';
         $race2 -> starting_point = 'a';
         $race2 -> maps_image  = '20230204102037.png';
@@ -48,13 +48,13 @@ class RacesTableSeeder extends Seeder
 
         //Race3
         $race3 = new Race;
-        $race3 ->name = "Sevilla";
-        $race3 -> description = 'Cumbres infinitas, pendientes imponentes y unos paisajes de altura que te dejarán impresionado. Ven con nosotros a cumplir tu sueño ciclista. Apúntate a nuestro stage en grupo organizado.';
+        $race3 ->name = "Rioja Bike Race";
+        $race3 -> description = 'The perfect combination of gastronomy, culture, landscape and the beautiful environment ideal for mountain biking make the Rioja Bike Race one of the favorites of the participants, including women. During the three and a half days of the race, Logroño becomes the headquarters for its more than a thousand participants who enjoy the varied landscapes and many vineyards during their circular routes.';
         $race3 -> ramp = 600;
         $race3 -> max_participants = '80';
         $race3 -> race_price = 137;
         $race3 -> km = 0;
-        $race3 -> date = '2023-02-20';
+        $race3 -> date = '2023-03-20';
         $race3 -> hour = '06:00:00';
         $race3 -> starting_point = 'Isla de Tenerife';
         $race3 -> maps_image  = '20230204102150.png';
@@ -64,8 +64,8 @@ class RacesTableSeeder extends Seeder
 
         //Race4
         $race4 = new Race;
-        $race4 ->name = "Andorra";
-        $race4 -> description = 'Apúntate a nuestra ruta de cicloturismo por el Tirol Austriaco, los Alpes Julianos y Dolomite. Un desafío único que te llevará a conocer algunos de los parajes más increíbles de Europa.';
+        $race4 ->name = "Catalunya Bike Race";
+        $race4 -> description = 'This race debuted in 2017 and took off like foam, with around a thousand participants in its first two editions. After the first year, the organization learned from the experience and went from being a very technical and quite tough race with the first stage being a time trial to a more accessible race that accepts many styles and levels of cyclist in its second edition.';
         $race4 -> ramp = 440;
         $race4 -> max_participants = '50';
         $race4 -> race_price = 149;
@@ -80,8 +80,8 @@ class RacesTableSeeder extends Seeder
 
         //Race5
         $race5 = new Race;
-        $race5 ->name = "Aragon";
-        $race5 -> description = 'Una tierra de montañas bañada por las aguas del río Miño y del río Sil.  Sin duda, Los Ancares y la Ribeira Sacra son dos parajes naturales ideales para disfrutar a bordo de la bici.';
+        $race5 ->name = "Asturias Bike Race";
+        $race5 -> description = 'In 2019 the second edition of this race will be held, which is the little sister of Andalucía, La Rioja and Catalunya Bike Race. This race with designation of origin and as beautiful as Asturias becomes part of the UCI circuit this year and promises balanced stages and stages tinged with green.';
         $race5 -> ramp = 450;
         $race5 -> max_participants = '100';
         $race5 -> race_price = 145;
@@ -96,8 +96,8 @@ class RacesTableSeeder extends Seeder
 
         //Race6
         $race6 = new Race;
-        $race6 ->name = "Alemania";
-        $race6 -> description = 'Únete a nuestra ruta de cicloturismo en el Parque Nacional del Stelvio. Una experiencia única para recorrer a golpe de pedal los Alpes Centrales y sentirte como una leyenda del Giro';
+        $race6 ->name = "Tour of Andalusia MTB";
+        $race6 -> description = 'This race with more than 250 km of route divided into 4 stages between Málaga and Cádiz is a different competition that offers a lot of flexibility to participate (you can do one, two, three or all the stages, alone or with a team) and fights to be a social project with a family and environmental focus supporting the economy of inland Andalusia. It is a demanding MTB race but its organization is focused on making the experience of the participants unforgettable.';
         $race6 -> ramp = 500;
         $race6 -> max_participants = '70';
         $race6 -> race_price = 150;
@@ -112,8 +112,8 @@ class RacesTableSeeder extends Seeder
 
         //Race7
         $race7 = new Race;
-        $race7 ->name = "Valencia";
-        $race7 -> description = 'Puertos de montaña, senderos junto al mar, rutas de interior… Asturias lo tiene todo para ser un auténtico paraíso ciclista.';
+        $race7 ->name = "Volcat";
+        $race7 -> description = 'The 14th edition of this test will be held in April, making it not only the oldest in Spain but also one of the oldest in Europe. It is a race that adds points for the UCI but it is of a popular format with a Pro and Open category and allows you to discover the trails, corners and places of the Central axis of Catalonia during its 4 stages and based in Igualada.        ';
         $race7 -> ramp = 430;
         $race7 -> max_participants = '100';
         $race7 -> race_price = 200;

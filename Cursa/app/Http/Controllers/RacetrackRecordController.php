@@ -134,7 +134,7 @@ class RacetrackRecordController extends Controller
 
     public function racetrackRecord(Request $request){
         /* 25 puntos al primer, 18 al segundo, 15 al tercero, 12 al cuarto, 10 al quinto, 8 al sexto, 6 al séptimo, 4 al octavo, 2 al noveno y 1 al décimo.*/
-        $arrayPoitns = [1=>25, 2=>18, 3=>15, 4=>12, 5=>10, 6=>8, 7=>6, 8=>4, 9=>2, 10=>1];
+        $arrayPoitns = [1=>1000, 2=>900, 3=>800, 4=>700, 5=>600, 6=>500, 7=>400, 8=>300, 9=>200, 10=>100];
 
         $race = Race::find($request->id);
 

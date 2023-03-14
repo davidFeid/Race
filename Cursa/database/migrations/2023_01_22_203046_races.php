@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('races', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 255);
-            $table->string('description', 255);
+            $table->string('description', 500);
             $table->decimal('ramp', 5, 2);
             $table->string('max_participants');
             $table->float('race_price');
