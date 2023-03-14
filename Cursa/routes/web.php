@@ -67,6 +67,7 @@ Route::get('runnerForm/registro/dni/store', [App\Http\Controllers\RacetrackRecor
 Route::post('runnerForm/registro/register/check', [App\Http\Controllers\RacetrackRecordController::class, 'checkRunnerRegister'])->name('runnerCheckRegister');
 Route::get('runnerForm/registro/register/store', [App\Http\Controllers\RacetrackRecordController::class, 'storeRunnerRegister'])->name('runnerStoreRegister');
 Route::post('runnerForm/registro/total', [App\Http\Controllers\RacetrackRecordController::class, 'storeRunnerRegister']);
+Route::get('racetrackRecord/{id}/{dni}', [App\Http\Controllers\RacetrackRecordController::class, 'racetrackRecord'])->name('racetrackRecord');
 
 //Racetrack-record
 Route::get('racetrackRecord/{id}/{dni}/', [App\Http\Controllers\RacetrackRecordController::class, 'racetrackRecord'])->name('racetrackRecord');
