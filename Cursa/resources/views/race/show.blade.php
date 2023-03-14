@@ -54,8 +54,9 @@
                         </table>
                     </div>
                 </div>
-
-                @include('race.upload')
+                @if($race->date < $dateDais)
+                    @include('race.upload')
+                @endif
 
 
             </div>

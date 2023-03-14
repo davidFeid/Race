@@ -80,8 +80,11 @@ class RaceController extends Controller
      */
     public function show($id)
     {
+        $date = Carbon::now();
+        $dateDais = $date->format('Y-m-d');
+        $race = Race::find($id);
         $runners = RacetrackRecord::with('race')->where('race_id','=',$id)->get();
-        return view('race.show', compact('runners','id'));
+        return view('race.show', compact('runners','id','dateDais','race'));
     }
 
     /**
