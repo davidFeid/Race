@@ -11,7 +11,8 @@
             <!-- DEMO 5 -->
 
             <div class="row row-cols-1 row-cols-md-2 g-4">
-            @foreach ($races as $race => $value)
+
+            @foreach ($races->slice(0, 5) as $race => $value)
                 @if ($diaActual<$value->date)
                 <div class="col-md-4">
 
