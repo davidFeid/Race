@@ -32,6 +32,8 @@ Route::get('/home-admin', [App\Http\Controllers\HomeController::class, 'homeAdmi
 Route::resource('races', RaceController::class)->middleware('auth');
 Route::get('racePage/{id}', [App\Http\Controllers\RaceController::class, 'racePage'])->name('racePage');
 Route::get('allRaces', [App\Http\Controllers\RaceController::class, 'allRace']);
+Route::get('finishedRaces', [App\Http\Controllers\RaceController::class, 'finishedRaces']);
+Route::get('racesToStart', [App\Http\Controllers\RaceController::class, 'racesToStart']);
 Route::post('search/races', [App\Http\Controllers\RaceController::class, 'raceSearch'])->name('raceSearch');
 Route::get('gallery', [App\Http\Controllers\RaceController::class, 'gallery'])->name('gallery');
 Auth::routes();

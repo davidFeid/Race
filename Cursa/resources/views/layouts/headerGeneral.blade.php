@@ -7,7 +7,18 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link link-success" href="{{ url('allRaces') }}">Races</a>
+
+              <div class="dropdown">
+                <a class="nav-link link-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Races
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li><a class="nav-link link-success" href="{{ url ('allRaces')}}" >All Races</a></li>
+                  <li> <a class="nav-link link-success" href="{{ url ('finishedRaces')}}" >Finished Races</a></li>
+                  <li> <a class="nav-link link-success" href="{{ url ('racesToStart')}}" >Races To Start</a></li>
+                </ul>
+              </div>
+
         </li>
         <li class="nav-item">
           <a class="nav-link link-success" href="#">Ranking</a>
@@ -24,3 +35,4 @@
     </div>
   </div>
 </nav>
+

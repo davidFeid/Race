@@ -163,13 +163,42 @@ class RaceController extends Controller
     public function allRace(Request $request)
     {
 
+        $date = Carbon::now();
+        $date = $date->format('Y-m-d');
         $races = Race::paginate();
         $request->session()->put('key', 'value');
         return view('race.allRaces', compact('races'))
-            ->with('i', (request()->input('page', 1) - 1) * $races->perPage());
-
+            ->with('i', (request()->input('page', 1) - 1) * $races->perPage())
+            ->with('diaActual',$date);
 
     }
+    public function finishedRaces(Request $request)
+    {
+
+        $date = Carbon::now();
+        $date = $date->format('Y-m-d');
+        $races = Race::paginate();
+        $request->session()->put('key', 'value');
+        return view('race.finishedRaces', compact('races'))
+            ->with('i', (request()->input('page', 1) - 1) * $races->perPage())
+            ->with('diaActual',$date);
+
+    }
+
+    public function racesToStart(Request $request)
+    {
+
+        $date = Carbon::now();
+        $date = $date->format('Y-m-d');
+        $races = Race::paginate();
+        $request->session()->put('key', 'value');
+        return view('race.racesToStart', compact('races'))
+            ->with('i', (request()->input('page', 1) - 1) * $races->perPage())
+            ->with('diaActual',$date);
+
+    }
+
+
 
     public function raceSearch(Request $request)
     {

@@ -5,7 +5,7 @@
 
     @section('content')
         <div class="container py-5">
-            <h1>All our races</h1>
+            <h1>All Races to start</h1>
             <!-- For Demo Purpose -->
 
             <!-- DEMO 5 -->
@@ -33,27 +33,6 @@
                                 </div>
                             </a>
                         </div>
-                @else
-                    <div class="col-md-4">
-                        <h4 class="text-center finishedRace"><strong>{{$value->name}} / Finished race </strong></h4>
-                        <hr>
-                        <a class="dropdown-item" href="{{ route('racePage',$value->id) }}">
-                            <div class="profile-card-6"><img src="/promotionalPosters/{{ $value->promotional_poster }}"  width="100%" class="img img-responsive">
-                                <div class="profile-name"> {{$value->date}}</div>
-                                <div class="profile-position">{{substr($value->description, 0, 18)."...";}}</div>
-                                <div class="profile-overview">
-                                    <div class="profile-overview">
-                                        <div class="row text-center">
-                                            <div class="col-xs-4">
-                                                <h3>Price</h3>
-                                                <p>{{$value->race_price}}€</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
                     @endif
              @endforeach
                 </div>
