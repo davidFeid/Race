@@ -3,58 +3,41 @@
     Home
     @endsection
 
-
-
     @section('content')
         <div class="container py-5">
             <h1>Races available
                 <br>Sign up now </h1>
             <!-- For Demo Purpose -->
-
             <!-- DEMO 5 -->
 
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+            @foreach ($races as $race => $value)
+                @if ($diaActual<$value->date)
+                <div class="col-md-4">
 
-
-        @for($i = 0; $i < 5; $i++)
-
-            @if ($diaActual<$races[$i]->date)
-                     @if ($i == 0 || $i == 2)
-                        <div class="py-5">
-                            <h3 class="font-weight-bold mb-0">{{$races[$i]->name}}</h3>
-                            <div class="row">
-                            <!-- DEMO 5 Item-->
-
-                                <div class="col-lg-6 mb-3 mb-lg-0">
-                                    <div class="hover hover-5 text-white rounded">
-                                        <a class="dropdown-item" href="{{ route('racePage',$races[$i]->id) }}">
-                                            <img src="/promotionalPosters/{{ $races[$i]->promotional_poster }}" width="100px" alt="">
-                                            <div class="hover-overlay"></div>
-                                            <div class="hover-5-content">
-                                                <h3 class="hover-5-title text-uppercase font-weight-light mb-0">{{substr($races[$i]->description, 0, 18)."...";}}<span> more info</span></h3>
+                            <h4 class="text-center"><strong>{{$value->name}}</strong></h4>
+                            <hr>
+                            <a class="dropdown-item" href="{{ route('racePage',$value->id) }}">
+                                <div class="profile-card-6"><img src="/promotionalPosters/{{ $value->promotional_poster }}"  width="100%" class="img img-responsive">
+                                    <div class="profile-name"> {{$value->date}}</div>
+                                    <div class="profile-position">{{substr($value->description, 0, 18)."...";}}</div>
+                                    <div class="profile-overview">
+                                        <div class="profile-overview">
+                                            <div class="row text-center">
+                                                <div class="col-xs-4">
+                                                    <h3>Price</h3>
+                                                    <p>{{$value->race_price}}€</p>
+                                                </div>
                                             </div>
-                                        </a>
+                                        </div>
                                     </div>
                                 </div>
-
-                            @endif
-
-                @if ($i == 1 || $i == 4)
-                         <div class="col-lg-6">
-                            <!-- DEMO 5 Item-->
-                            <div class="hover hover-5 text-white rounded"><img src="/promotionalPosters/{{ $races[$i]->promotional_poster }}" width="100px" alt="">
-                            <div class="hover-overlay"></div>
-                            <div class="hover-5-content">
-                                <h3 class="hover-5-title text-uppercase font-weight-light mb-0">Image <strong class="font-weight-bold text-white">Caption </strong><span>Colorfull</span></h3>
-                            </div>
-                            </div>
+                            </a>
                         </div>
-                        </div>
-                    </div>
-                @endif
 
-            @endif
-         @endfor
-
+                        @endif
+                        @endforeach
+                </div>
              <div class="product_description">
                 <div class="product_name">Sponsors</div>
                 @foreach ($sponsorImage as $sponsor)

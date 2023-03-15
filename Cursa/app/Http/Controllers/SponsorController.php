@@ -18,6 +18,7 @@ class SponsorController extends Controller
      */
     public function index(Request $request)
     {
+
         $sponsors = Sponsor::paginate();
         $request->session()->put('key', 'value');
         return view('sponsor.index', compact('sponsors'))
@@ -111,7 +112,7 @@ class SponsorController extends Controller
      */
     public function destroy($id)
     {
-       
+
         if(Sponsor::find($id)->active == "0"){
             $sponsor = Sponsor::find($id)->update(['active' => "1"]);
         }else{

@@ -76,9 +76,10 @@
                                     @endif
                                     <br>
                                     <div class="product_name">Sponsors</div>
+
                                     @foreach ($sponsorImage as $sponsor)
 
-                                        <img src="/logoImages/{{ $sponsor->logo }}" width="70px">
+                                        <img src="/logoImages/{{ $sponsor['logo'] }}" width="100px">
                                     @endforeach
                                 </div>
                             </div>

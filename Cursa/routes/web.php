@@ -75,3 +75,4 @@ Route::get('racetrackRecord/{id}/{dni}', [App\Http\Controllers\RacetrackRecordCo
 
 //pdf
 Route::get('generatePDF/{response}', [PDFController::class, 'generatePDF'])->name('generatePDF');
+Route::get('generatePDF2/{response}', [PDFController::class, 'generatePDF2'])->name('generatePDF2');

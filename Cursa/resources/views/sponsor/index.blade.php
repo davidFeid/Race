@@ -34,8 +34,8 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                       
-                                        
+
+
 										<th>Cif</th>
 										<th>Name</th>
 										<th>Logo</th>
@@ -51,8 +51,8 @@
                                 <tbody>
                                     @foreach ($sponsors as $sponsor)
                                         <tr>
-                                            
-                                            
+
+
 											<td>{{ $sponsor->cif }}</td>
 											<td>{{ $sponsor->name }}</td>
 											<td><img src="/logoImages/{{ $sponsor->logo }}" width="100px"></td>
@@ -66,6 +66,7 @@
                                                 <form action="{{ route('sponsors.destroy',$sponsor->cif) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('sponsors.show',$sponsor->cif) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('sponsors.edit',$sponsor->cif) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+
                                                     @csrf
                                                     @method('DELETE')
 
@@ -74,6 +75,8 @@
                                                     @else
                                                         <button type="submit" class="btn btn-danger btn-sm button-avtice-color"><i class="fa fa-fw fa-trash"></i> Active</button>
                                                     @endif
+
+                                                    <a href="{{ route('generatePDF2',$sponsor->cif)}}" class="btn btn-primary">Invoice (PDF)</a>
 
                                                 </form>
                                             </td>

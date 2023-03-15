@@ -156,8 +156,7 @@ class RaceController extends Controller
         $date = $date->format('Y-m-d');
         $race = Race::find($request->id);
         $raceImage = raceImage::with('race')->where('race_id','=',$request->id)->get();
-        $sql ="SELECT sponsors.logo FROM `sponsors` INNER JOIN `race_sponsors` ON sponsors.cif = race_sponsors.sponsor_cif WHERE race_sponsors.race_id = '".$request->id."'";
-        $sponsorImage = DB::select($sql);
+        $sponsorImage = Sponsor::join('race_sponsors','sponsors.cif','race_sponsors.sponsor_cif')->where('race_sponsors.race_id','=',$request->id)->get()->toArray();
         return view('race.racePage', compact('race','sponsorImage','raceImage','date'));
     }
 
