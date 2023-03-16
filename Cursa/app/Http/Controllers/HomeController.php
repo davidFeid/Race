@@ -31,10 +31,10 @@ class HomeController extends Controller
         $date = Carbon::now();
         $date = $date->format('Y-m-d');
         $sponsor = Sponsor::paginate();
-        $races = Race::paginate();
+        $races = Race::where('date','>',$date)->orderBy('date', 'desc')->get();
         $request->session()->put('key', 'value');
         return view('home', compact('races'))
-            ->with('i', (request()->input('page', 1) - 1) * $races->perPage())
+            ->with('races',$races)
             ->with('diaActual',$date)
             ->with('sponsorImage',$sponsor);
 

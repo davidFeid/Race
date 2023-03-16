@@ -12,7 +12,7 @@
 
             <div class="row row-cols-1 row-cols-md-2 g-4">
 
-            @foreach ($races->slice(0, 5) as $race => $value)
+            @foreach ($races->slice(0, 4) as $race => $value)
                 @if ($diaActual<$value->date)
                 <div class="col-md-4">
 
@@ -21,7 +21,7 @@
                             <a class="dropdown-item" href="{{ route('racePage',$value->id) }}">
                                 <div class="profile-card-6"><img src="/promotionalPosters/{{ $value->promotional_poster }}"  width="100%" class="img img-responsive">
                                     <div class="profile-name"> {{$value->date}}</div>
-                                    <div class="profile-position">{{substr($value->description, 0, 18)."...";}}</div>
+                                    <div class="profile-position">{{substr($value->description, 0, 10)."...";}}</div>
                                     <div class="profile-overview">
                                         <div class="profile-overview">
                                             <div class="row text-center">

@@ -24,13 +24,13 @@ class Insurer extends Model
 
   protected $primaryKey = "cif";
   protected $keyType = 'string';
-    
+
     static $rules = [
 		'cif' => 'required',
 		'name' => 'required',
 		'address' => 'required'
     ];
-    
+
     protected $hidden = ['active'];
     protected $perPage = 20;
 
@@ -49,6 +49,7 @@ class Insurer extends Model
     {
         return $this->hasMany('App\Models\RacetrackRecord', 'insurer_cif', 'cif');
     }
-    
+
+
 
 }

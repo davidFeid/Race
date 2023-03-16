@@ -22,7 +22,7 @@ class RacesTableSeeder extends Seeder
         $race1 -> max_participants = '100';
         $race1 -> race_price = 100;
         $race1 -> km = 432;
-        $race1 -> date = '2023-03-16';
+        $race1 -> date = '2023-04-16';
         $race1 -> hour = '06:00:00';
         $race1 -> starting_point = 'La Sierra de Cazorla';
         $race1 -> maps_image  = '20230204101753.png';
@@ -38,7 +38,7 @@ class RacesTableSeeder extends Seeder
         $race2 -> max_participants = '50';
         $race2 -> race_price = 260;
         $race2 -> km = 380;
-        $race2 -> date = '2023-04-04';
+        $race2 -> date = '2023-02-16';
         $race2 -> hour = '00:00:00';
         $race2 -> starting_point = 'a';
         $race2 -> maps_image  = '20230204102037.png';
@@ -54,7 +54,7 @@ class RacesTableSeeder extends Seeder
         $race3 -> max_participants = '80';
         $race3 -> race_price = 137;
         $race3 -> km = 0;
-        $race3 -> date = '2023-03-20';
+        $race3 ->  date = '2023-04-12';
         $race3 -> hour = '06:00:00';
         $race3 -> starting_point = 'Isla de Tenerife';
         $race3 -> maps_image  = '20230204102150.png';
@@ -70,7 +70,7 @@ class RacesTableSeeder extends Seeder
         $race4 -> max_participants = '50';
         $race4 -> race_price = 149;
         $race4 -> km = 639;
-        $race4 -> date = '2023-03-13';
+        $race4 -> date = '2023-02-16';
         $race4 -> hour = '09:00:00';
         $race4 -> starting_point = 'Tirol Austriaco';
         $race4 -> maps_image  = '20230204102405.png';
@@ -86,7 +86,7 @@ class RacesTableSeeder extends Seeder
         $race5 -> max_participants = '100';
         $race5 -> race_price = 145;
         $race5 -> km = 694;
-        $race5 -> date = '2023-05-27';
+        $race5 ->  date = '2023-04-14';
         $race5 -> hour = '08:00:00';
         $race5 -> starting_point = 'Los Ancares';
         $race5 -> maps_image  = '20230204102511.png';
@@ -102,7 +102,7 @@ class RacesTableSeeder extends Seeder
         $race6 -> max_participants = '70';
         $race6 -> race_price = 150;
         $race6 -> km = 693;
-        $race6 -> date = '2023-02-13';
+        $race6 -> date = '2023-04-13';
         $race6 -> hour = '05:00:00';
         $race6 -> starting_point = 'Parque Nacional del Stelvio';
         $race6 -> maps_image  = '20230204102732.png';
@@ -118,7 +118,7 @@ class RacesTableSeeder extends Seeder
         $race7 -> max_participants = '100';
         $race7 -> race_price = 200;
         $race7 -> km = 710;
-        $race7 -> date = '2023-02-28';
+        $race7 -> date = '2023-04-15';
         $race7 -> hour = '09:00:00';
         $race7 -> starting_point = 'Asturias';
         $race7 -> maps_image  = '20230204102850.png';

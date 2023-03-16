@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Sponsor;
 use Illuminate\Http\Request;
+use App\Models\Race;
+use App\Models\RaceSponsor;
 
 /**
  * Class SponsorController
@@ -33,7 +35,8 @@ class SponsorController extends Controller
     public function create()
     {
         $sponsor = new Sponsor();
-        return view('sponsor.create', compact('sponsor'));
+        $races = Race::all();
+        return view('sponsor.create', compact('sponsor','races'));
     }
 
     /**
@@ -45,14 +48,19 @@ class SponsorController extends Controller
     public function store(Request $request)
     {
         request()->validate(Sponsor::$rules);
-
         $input = $request->all();
-
         if ($image = $request->file('logo')) {
             $destinationPath = 'logoImages/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $input['logo'] = "$profileImage";
+        }
+        if(isset($request->race)){
+            foreach ($request->race as $key => $value) {
+                $input2['race_id'] = $key;
+                $input2['sponsor_cif'] = $request->cif;
+                RaceSponsor::create($input2);
+            }
         }
 
         $sponsor = Sponsor::create($input);
@@ -70,8 +78,12 @@ class SponsorController extends Controller
      */
     public function show($id)
     {
-        $sponsor = Sponsor::find($id);
 
+        if(RaceSponsor::select('*')->where('sponsor_cif','=',$id)->count() > 0){
+            $insurer = RaceSponsor::with('sponsor')->with('race')->where('sponsor_cif','=',$id)->get();
+        }else{
+            $insurer = Sponsor::find($id);
+        }
         return view('sponsor.show', compact('sponsor'));
     }
 
