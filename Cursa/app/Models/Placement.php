@@ -35,13 +35,15 @@ class Placement extends Model
 
     protected $primaryKey = "runner_dni";
 
+    protected $keyType = 'string';
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function runner()
     {
-        return $this->hasOne('App\Models\Runner', 'dni', 'runner_dni');
+        return $this->hasMany('App\Models\Runner', 'dni', 'runner_dni');
     }
     
 

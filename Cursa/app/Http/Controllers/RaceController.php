@@ -156,8 +156,26 @@ class RaceController extends Controller
         $date = $date->format('Y-m-d');
         $race = Race::find($request->id);
         $raceImage = raceImage::with('race')->where('race_id','=',$request->id)->get();
+<<<<<<< Updated upstream
         $sponsorImage = Sponsor::join('race_sponsors','sponsors.cif','race_sponsors.sponsor_cif')->where('race_sponsors.race_id','=',$request->id)->get()->toArray();
         return view('race.racePage', compact('race','sponsorImage','raceImage','date'));
+=======
+        $ranking['general'] = RacetrackRecord::join('runners','racetrack_records.runner_dni','runners.dni')->where('racetrack_records.race_id','=',$request->id)->orderBy('racetrack_records.time','asc')->get();
+        $ranking['male'] = RacetrackRecord::join('runners','racetrack_records.runner_dni','runners.dni')->where('racetrack_records.race_id','=',$request->id)->where('runners.sex','male')->orderBy('racetrack_records.time','asc')->get();
+        $ranking['female'] = RacetrackRecord::join('runners','racetrack_records.runner_dni','runners.dni')->where('racetrack_records.race_id','=',$request->id)->where('runners.sex','female')->orderBy('racetrack_records.time','asc')->get();
+        $ranking['master'][20] = RacetrackRecord::join('runners','racetrack_records.runner_dni','runners.dni')->where('racetrack_records.race_id','=',$request->id)->whereBetween('runners.birth_date', [date('Y-m-d',strtotime ('-20 year' , strtotime($date))), $date])->orderBy('racetrack_records.time','asc')->get()->toArray();
+        $ranking['master'][30] = RacetrackRecord::join('runners','racetrack_records.runner_dni','runners.dni')->where('racetrack_records.race_id','=',$request->id)->whereBetween('runners.birth_date', [date('Y-m-d',strtotime ('-30 year' , strtotime($date))), date('Y-m-d',strtotime ('-20 year' , strtotime($date)))])->orderBy('racetrack_records.time','asc')->get()->toArray();
+        $ranking['master'][40] = RacetrackRecord::join('runners','racetrack_records.runner_dni','runners.dni')->where('racetrack_records.race_id','=',$request->id)->whereBetween('runners.birth_date', [date('Y-m-d',strtotime ('-40 year' , strtotime($date))), date('Y-m-d',strtotime ('-30 year' , strtotime($date)))])->orderBy('racetrack_records.time','asc')->get()->toArray();
+        $ranking['master'][50] = RacetrackRecord::join('runners','racetrack_records.runner_dni','runners.dni')->where('racetrack_records.race_id','=',$request->id)->whereBetween('runners.birth_date', [date('Y-m-d',strtotime ('-50 year' , strtotime($date))), date('Y-m-d',strtotime ('-40 year' , strtotime($date)))])->orderBy('racetrack_records.time','asc')->get()->toArray();
+        $ranking['master'][60] = RacetrackRecord::join('runners','racetrack_records.runner_dni','runners.dni')->where('racetrack_records.race_id','=',$request->id)->whereBetween('runners.birth_date', [date('Y-m-d',strtotime ('-60 year' , strtotime($date))), date('Y-m-d',strtotime ('-50 year' , strtotime($date)))])->orderBy('racetrack_records.time','asc')->get()->toArray();
+        //dd(date('Y-m-d',strtotime ('-20 year' , strtotime($date))));
+
+        //dd([date('Y-m-d',strtotime ('-20 year' , strtotime($date))), $date]);
+        //dd($ranking);
+        $sql ="SELECT sponsors.logo FROM `sponsors` INNER JOIN `race_sponsors` ON sponsors.cif = race_sponsors.sponsor_cif WHERE race_sponsors.race_id = '".$request->id."'";
+        $sponsorImage = DB::select($sql);
+        return view('race.racePage', compact('race','sponsorImage','raceImage','date','ranking'));
+>>>>>>> Stashed changes
     }
 
     public function allRace(Request $request)
