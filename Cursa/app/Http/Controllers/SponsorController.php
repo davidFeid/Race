@@ -47,6 +47,7 @@ class SponsorController extends Controller
      */
     public function store(Request $request)
     {
+        
         request()->validate(Sponsor::$rules);
         $input = $request->all();
         if ($image = $request->file('logo')) {
@@ -55,6 +56,7 @@ class SponsorController extends Controller
             $image->move($destinationPath, $profileImage);
             $input['logo'] = "$profileImage";
         }
+        $sponsor = Sponsor::create($input);
         if(isset($request->race)){
             foreach ($request->race as $key => $value) {
                 $input2['race_id'] = $key;
@@ -62,9 +64,6 @@ class SponsorController extends Controller
                 RaceSponsor::create($input2);
             }
         }
-
-        $sponsor = Sponsor::create($input);
-
         return redirect()->route('sponsors.index')
             ->with('success', 'Sponsor created successfully.');
 
@@ -98,7 +97,16 @@ class SponsorController extends Controller
     {
         $sponsor = Sponsor::find($id);
 
-        return view('sponsor.edit', compact('sponsor'));
+        //RACES WHERE ISN'T INSURER
+        $racesN = RaceSponsor::select('race_id')->where('sponsor_cif','!=',''.$id.'')->get();
+        //RACES WHERE IS INSURERS
+        $racesY = RaceSponsor::where('sponsor_cif','=',''.$id.'')->get();
+        $races = [];
+        foreach($racesY as $id){
+            $races[] = $id->race_id;
+        }
+        $allRaces = Race::whereNotIn('id',$races)->get();
+        return view('sponsor.edit', compact('sponsor','racesY','racesN','allRaces'));
     }
 
     /**
@@ -110,10 +118,25 @@ class SponsorController extends Controller
      */
     public function update(Request $request, Sponsor $sponsor)
     {
-        request()->validate(Sponsor::$rules);
+        //dd($request->all());
+        request()->validate([
+            'cif' => 'required',
+		    'name' => 'required',
+		    'address' => 'required',
+		    'email' => 'required',
+		    'home' => 'required'
+        ]);
+        //request()->validate(Sponsor::$rules);
 
         $sponsor->update($request->all());
-
+        RaceSponsor::where('sponsor_cif',$request->cif)->delete();
+        if(isset($request->race)){
+            foreach ($request->race as $key => $value) {
+                $input2['race_id'] = $key;
+                $input2['sponsor_cif'] = $request->cif;
+                RaceSponsor::create($input2);
+            }
+        }
         return redirect()->route('sponsors.index')
             ->with('success', 'Sponsor updated successfully');
     }

@@ -33,9 +33,7 @@ class Sponsor extends Model
 		'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 		'address' => 'required',
 		'email' => 'required',
-		'home' => 'required',
-		'total' => 'required',
-
+		'home' => 'required'
     ];
 
     protected $hidden = ['active'];
@@ -46,7 +44,7 @@ class Sponsor extends Model
      *
      * @var array
      */
-    protected $fillable = ['cif','name','logo','address','email','home','total','active'];
+    protected $fillable = ['cif','name','logo','address','email','home','active'];
 
 
     /**

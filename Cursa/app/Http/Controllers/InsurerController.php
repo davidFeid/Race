@@ -90,6 +90,7 @@ class InsurerController extends Controller
         $racesN = RaceInsurer::select('race_id')->where('insurer_cif','!=',''.$id.'')->get();
         //RACES WHERE IS INSURERS
         $racesY = RaceInsurer::where('insurer_cif','=',''.$id.'')->get();
+        $races = [];
         foreach($racesY as $id){
             $races[] = $id->race_id;
         }
@@ -109,6 +110,7 @@ class InsurerController extends Controller
     {
         request()->validate(Insurer::$rules);
         $insurer->update($request->all());
+        RaceInsurer::where('insurer_cif',$request->cif)->delete();
         if(isset($request->race)){
             foreach ($request->race as $key => $value) {
                 $input['race_id'] = $key;
