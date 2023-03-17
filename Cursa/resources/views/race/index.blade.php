@@ -57,7 +57,7 @@
                                         <tr>
                                             <td>{{ $race->id }}</td>
                                             <td>{{ $race->name }}</td>
-											<td>{{ $race->description }}</td>
+											<td>{{ substr($race->description, 0, 20)."..." }} </td>
 											<td>{{ $race->ramp }}</td>
 											<td>{{ $race->max_participants }}</td>
                                             <td>{{ $race->race_price }}</td>

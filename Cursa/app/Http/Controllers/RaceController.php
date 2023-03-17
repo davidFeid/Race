@@ -156,10 +156,7 @@ class RaceController extends Controller
         $date = $date->format('Y-m-d');
         $race = Race::find($request->id);
         $raceImage = raceImage::with('race')->where('race_id','=',$request->id)->get();
-<<<<<<< Updated upstream
         $sponsorImage = Sponsor::join('race_sponsors','sponsors.cif','race_sponsors.sponsor_cif')->where('race_sponsors.race_id','=',$request->id)->get()->toArray();
-        return view('race.racePage', compact('race','sponsorImage','raceImage','date'));
-=======
         $ranking['general'] = RacetrackRecord::join('runners','racetrack_records.runner_dni','runners.dni')->where('racetrack_records.race_id','=',$request->id)->orderBy('racetrack_records.time','asc')->get();
         $ranking['male'] = RacetrackRecord::join('runners','racetrack_records.runner_dni','runners.dni')->where('racetrack_records.race_id','=',$request->id)->where('runners.sex','male')->orderBy('racetrack_records.time','asc')->get();
         $ranking['female'] = RacetrackRecord::join('runners','racetrack_records.runner_dni','runners.dni')->where('racetrack_records.race_id','=',$request->id)->where('runners.sex','female')->orderBy('racetrack_records.time','asc')->get();
@@ -175,7 +172,6 @@ class RaceController extends Controller
         $sql ="SELECT sponsors.logo FROM `sponsors` INNER JOIN `race_sponsors` ON sponsors.cif = race_sponsors.sponsor_cif WHERE race_sponsors.race_id = '".$request->id."'";
         $sponsorImage = DB::select($sql);
         return view('race.racePage', compact('race','sponsorImage','raceImage','date','ranking'));
->>>>>>> Stashed changes
     }
 
     public function allRace(Request $request)
