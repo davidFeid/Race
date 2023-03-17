@@ -38,7 +38,6 @@
 										<th>Cif</th>
 										<th>Name</th>
 										<th>Address</th>
-										<th>Active</th>
 
                                         <th></th>
                                     </tr>
@@ -50,7 +49,6 @@
 											<td>{{ $insurer->cif }}</td>
 											<td>{{ $insurer->name }}</td>
 											<td>{{ $insurer->address }}</td>
-											<td>{{ $insurer->active }}</td>
 
                                             <td>
                                                 <form action="{{ route('insurers.destroy',$insurer->cif) }}" method="POST">

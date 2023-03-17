@@ -111,9 +111,7 @@ class PlacementController extends Controller
     /*RANKING*/
     public function ranking()
     {
-        $general = Placement::join('runners','placements.runner_dni','runners.dni')->orderBy('placements.points','desc')->get()->toArray();
-        $male = Placement::join('runners','placements.runner_dni','runners.dni')->where('runners.sex','male')->orderBy('placements.points','desc')->get()->toArray();
-        $female = Placement::join('runners','placements.runner_dni','runners.dni')->where('runners.sex','female')->orderBy('placements.points','desc')->get()->toArray();
-        dd($female);
+        $ranking = Placement::join('runners','placements.runner_dni','runners.dni')->orderBy('placements.points','desc')->get();
+        return view('placement.placementGlobal', compact('ranking'));
     }
 }

@@ -29,19 +29,24 @@
             {{ Form::radio('home', '0', ['class' => 'form-control' . ($errors->has('home') ? ' is-invalid' : ''), 'placeholder' => 'Home']) }}
             {!! $errors->first('home', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
-            {{ Form::label('logo') }}
-            {{ Form::file('logo', $sponsor->logo, ['class' => 'form-control' . ($errors->has('logo') ? ' is-invalid' : ''), 'placeholder' => 'Logo']) }}
-            {!! $errors->first('logo', '<div class="invalid-feedback">:message</div>') !!}
+        <div class="box-body">
+        <div>Edit your races</div>
+            <div class="form-group row row-cols-5">
+                @foreach ($racesY as $race)
+                    <div class="form-check form-switch col">
+                        <input class="form-check-input" type="checkbox" id="check{{$race->race->id}}" checked name="race[{{$race->race->id}}][]">
+                        <label class="form-check-label" for="check{{$race->race->id}}">Race - {{$race->race->id}}</label>
+                    </div>
+                @endforeach
+            </div>
         </div>
         <div class="box-body">
-            <div>Register in Races...</div>
+            <div>Add Races</div>
             <div class="form-group row row-cols-5">
-                @foreach ($races as $race)
+                @foreach ($allRaces as $race)
                     <div class="form-check form-switch col">
-                        <input class="form-check-input" type="checkbox" id="check{{$race->id}}" name="race[{{$race->id}}][]" onchange="(document.getElementById('{{$race->id}}').disabled == true) ? document.getElementById('{{$race->id}}').disabled = false: document.getElementById('{{$race->id}}').disabled = true;">
+                        <input class="form-check-input" type="checkbox" id="check{{$race->id}}" name="race[{{$race->id}}][]">
                         <label class="form-check-label" for="check{{$race->id}}">Race - {{$race->id}}</label>
-                        <br>
                     </div>
                 @endforeach
             </div>
