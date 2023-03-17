@@ -40,7 +40,7 @@ class RunnersTableSeeder extends Seeder
         $runner3 = new Runner;
         $runner3 -> dni = '1E';
         $runner3 -> name = 'Runner3';
-        $runner3 -> sex= 'famele';
+        $runner3 -> sex= 'female';
         $runner3 -> address = 'Av 3';
         $runner3 -> birth_date = '1995-07-20';
         $runner3 -> federation = '1';
@@ -51,7 +51,7 @@ class RunnersTableSeeder extends Seeder
         $runner4 = new Runner;
         $runner4 -> dni = '1R';
         $runner4 -> name = 'Runner4';
-        $runner4 -> sex= 'famele';
+        $runner4 -> sex= 'female';
         $runner4 -> address = 'Av 4';
         $runner4 -> birth_date = '1987-02-20';
         $runner4 -> federation = '1';
@@ -73,7 +73,7 @@ class RunnersTableSeeder extends Seeder
         $runner6 = new Runner;
         $runner6 -> dni = '1Y';
         $runner6 -> name = 'Runner6';
-        $runner6 -> sex= 'famele';
+        $runner6 -> sex= 'female';
         $runner6 -> address = 'Av 6';
         $runner6 -> birth_date = '1985-07-20';
         $runner6 -> federation = '1';
@@ -106,7 +106,7 @@ class RunnersTableSeeder extends Seeder
         $runner9 = new Runner;
         $runner9 -> dni = '1O';
         $runner9 -> name = 'Runner9';
-        $runner9 -> sex= 'famele';
+        $runner9 -> sex= 'female';
         $runner9 -> address = 'Av 9';
         $runner9 -> birth_date = '1975-07-20';
         $runner9 -> federation = '1';
@@ -117,7 +117,7 @@ class RunnersTableSeeder extends Seeder
         $runner10 = new Runner;
         $runner10 -> dni = '1P';
         $runner10 -> name = 'Runner10';
-        $runner10 -> sex= 'famele';
+        $runner10 -> sex= 'female';
         $runner10 -> address = 'Av 10';
         $runner10 -> birth_date = '1967-02-20';
         $runner10 -> federation = '1';
@@ -161,7 +161,7 @@ class RunnersTableSeeder extends Seeder
         $runner14 = new Runner;
         $runner14 -> dni = '1F';
         $runner14 -> name = 'Runner14';
-        $runner14 -> sex= 'famele';
+        $runner14 -> sex= 'female';
         $runner14 -> address = 'Av 14';
         $runner14 -> birth_date = '1985-07-20';
         $runner14 -> federation = '1';
@@ -172,7 +172,7 @@ class RunnersTableSeeder extends Seeder
         $runner15 = new Runner;
         $runner15 -> dni = '1G';
         $runner15 -> name = 'Runner15';
-        $runner15 -> sex= 'famele';
+        $runner15 -> sex= 'female';
         $runner15 -> address = 'Av 15';
         $runner15 -> birth_date = '1965-07-20';
         $runner15 -> federation = '1';

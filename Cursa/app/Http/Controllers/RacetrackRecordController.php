@@ -147,7 +147,8 @@ class RacetrackRecordController extends Controller
             $count = RacetrackRecord::where('race_id','=',$request->id)->where('points','!=',NULL)->count();
             //if($count < 10){
                 $racetrackRecord = RacetrackRecord::where('race_id','=',$request->id)->where('runner_dni','=',$request->dni)->first();
-                $racetrackRecord->points = $arrayPoitns[$count+1] ?? 0;
+                //dd($arrayPoitns[$count+1]);
+                $racetrackRecord->points = (isset($arrayPoitns[$count+1])) ? $arrayPoitns[$count+1] : 0;
                 $racetrackRecord->time = $date->diff($race->hour )->format('%H:%I:%S');
                 $racetrackRecord->save();
             /*}else{

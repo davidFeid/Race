@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Placement;
+use App\Models\Runner;
 use Illuminate\Http\Request;
 
 /**
@@ -105,5 +106,14 @@ class PlacementController extends Controller
 
         return redirect()->route('placements.index')
             ->with('success', 'Placement deleted successfully');
+    }
+
+    /*RANKING*/
+    public function ranking()
+    {
+        $general = Placement::join('runners','placements.runner_dni','runners.dni')->orderBy('placements.points','desc')->get()->toArray();
+        $male = Placement::join('runners','placements.runner_dni','runners.dni')->where('runners.sex','male')->orderBy('placements.points','desc')->get()->toArray();
+        $female = Placement::join('runners','placements.runner_dni','runners.dni')->where('runners.sex','female')->orderBy('placements.points','desc')->get()->toArray();
+        dd($female);
     }
 }

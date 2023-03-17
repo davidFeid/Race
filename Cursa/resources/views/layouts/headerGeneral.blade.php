@@ -21,7 +21,7 @@
 
         </li>
         <li class="nav-item">
-          <a class="nav-link link-success" href="#">Ranking</a>
+          <a class="nav-link link-success" href="{{ route('ranking') }}">Ranking</a>
         </li>
         <li class="nav-item">
           <a class="nav-link link-success" href="{{ route('gallery') }}">Gallery</a>
