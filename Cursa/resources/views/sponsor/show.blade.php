@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ $sponsor->name ?? 'Show Sponsor' }}
+    {{ $sponsor[0]->sponsor->name ?? 'Show Sponsor' }}
 @endsection
 
 @section('content')
@@ -19,39 +19,30 @@
                     </div>
 
                     <div class="card-body">
-                        
                         <div class="form-group">
                             <strong>Cif:</strong>
-                            {{ $sponsor->cif }}
+                            {{ $sponsor[0]->sponsor->cif }}
                         </div>
                         <div class="form-group">
                             <strong>Name:</strong>
-                            {{ $sponsor->name }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Logo:</strong>
-                            {{ $sponsor->logo }}
+                            {{ $sponsor[0]->sponsor->name }}
                         </div>
                         <div class="form-group">
                             <strong>Address:</strong>
-                            {{ $sponsor->address }}
+                            {{ $sponsor[0]->sponsor->address }}
                         </div>
-                        <div class="form-group">
-                            <strong>Email:</strong>
-                            {{ $sponsor->email }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Home:</strong>
-                            {{ $sponsor->home }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Total:</strong>
-                            {{ $sponsor->total }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Active:</strong>
-                            {{ $sponsor->active }}
-                        </div>
+
+                        <h3>Races</h3>
+                        <ul class="list-group list-group-numbered">
+                            @foreach($sponsor as $insu)
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                  <div class="ms-2 me-auto">
+                                    <div class="fw-bold">Race {{$insu->race_id}}</div>
+                                    {{$insu->race->race_price}} €
+                                  </div>
+                                </li>
+                            @endforeach
+                        </ul>
 
                     </div>
                 </div>

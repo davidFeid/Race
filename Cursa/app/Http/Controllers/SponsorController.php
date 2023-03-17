@@ -80,10 +80,11 @@ class SponsorController extends Controller
     {
 
         if(RaceSponsor::select('*')->where('sponsor_cif','=',$id)->count() > 0){
-            $insurer = RaceSponsor::with('sponsor')->with('race')->where('sponsor_cif','=',$id)->get();
+            $sponsor = RaceSponsor::with('sponsor')->with('race')->where('sponsor_cif','=',$id)->get();
         }else{
-            $insurer = Sponsor::find($id);
+            $sponsor = Sponsor::find($id);
         }
+
         return view('sponsor.show', compact('sponsor'));
     }
 
