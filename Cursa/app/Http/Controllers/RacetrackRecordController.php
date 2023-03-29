@@ -118,6 +118,7 @@ class RacetrackRecordController extends Controller
             $insurer = explode(",",$runner['insurer_cif']);
             $runner['insurer_cif'] = $insurer[0];
         }
+        Runner::create($runner);
         $name = $runner['dni'].'_'.$runner['race_id'].'_qr.svg';
         QrCode::generate('http://127.0.0.1:8000/racetrackRecord/'.$runner['race_id'].'/'.$runner['dni'], '../public/qrcodes/'.$name);
         $runner['qr'] = $name;
